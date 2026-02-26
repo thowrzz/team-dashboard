@@ -22,55 +22,55 @@ import {
   Activity,
 } from "lucide-react";
 
-// Mock data
+// Real team data - Updated Feb 26, 2026
 const overviewStats = {
-  totalTasks: 12,
-  completedTasks: 7,
-  pendingTasks: 4,
-  overdueTasks: 1,
+  totalTasks: 1,
+  completedTasks: 0,
+  pendingTasks: 1,
+  overdueTasks: 0,
 };
 
 const teamMembers = [
   {
     name: "Aromal V G",
     task: "SEO - Product Solutions",
-    deadline: "3 Days",
+    deadline: "Mar 1, 2026 (3 Days)",
     priority: "High",
     status: "In Progress",
-    efficiency: 78,
-    tasksCompleted: 5,
+    efficiency: 0,
+    tasksCompleted: 0,
   },
 ];
 
 const dailyCompletion = [
-  { day: "Mon", completed: 4 },
-  { day: "Tue", completed: 6 },
-  { day: "Wed", completed: 5 },
-  { day: "Thu", completed: 8 },
-  { day: "Fri", completed: 7 },
-  { day: "Sat", completed: 3 },
-  { day: "Sun", completed: 2 },
+  { day: "Mon", completed: 0 },
+  { day: "Tue", completed: 0 },
+  { day: "Wed", completed: 0 },
+  { day: "Thu", completed: 0 },
+  { day: "Fri", completed: 0 },
+  { day: "Sat", completed: 0 },
+  { day: "Sun", completed: 0 },
 ];
 
 const weeklyEfficiency = [
-  { week: "Week 1", efficiency: 65 },
-  { week: "Week 2", efficiency: 72 },
-  { week: "Week 3", efficiency: 78 },
-  { week: "Week 4", efficiency: 82 },
+  { week: "Week 1", efficiency: 0 },
+  { week: "Week 2", efficiency: 0 },
+  { week: "Week 3", efficiency: 0 },
+  { week: "Week 4", efficiency: 0 },
 ];
 
 const checkInStatus = {
-  morning: true,
+  morning: false,
   afternoon: false,
   evening: false,
 };
 
 const recentActivity = [
-  { time: "2 hours ago", event: "Aromal submitted progress report", type: "update" },
-  { time: "5 hours ago", event: "Morning check-in completed", type: "checkin" },
-  { time: "1 day ago", event: "New task assigned: SEO - Product Solutions", type: "task" },
-  { time: "1 day ago", event: "Deadline alert: 3 days remaining", type: "alert" },
-  { time: "2 days ago", event: "Team member Aromal V G added", type: "member" },
+  { time: "Feb 26, 2026", event: "Dashboard link sent to Aromal V G", type: "update" },
+  { time: "Feb 26, 2026", event: "Task assigned: SEO - Product Solutions (High Priority)", type: "task" },
+  { time: "Feb 26, 2026", event: "Daily check-ins scheduled: 9AM, 2PM, 7PM", type: "checkin" },
+  { time: "Feb 26, 2026", event: "Deadline set: March 1, 2026", type: "alert" },
+  { time: "Feb 26, 2026", event: "Team member Aromal V G onboarded", type: "member" },
 ];
 
 export default function Dashboard() {
