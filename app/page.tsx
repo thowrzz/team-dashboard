@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -20,9 +20,10 @@ import {
   TrendingUp,
   Calendar,
   Activity,
+  RefreshCw,
 } from "lucide-react";
 
-// Real team data - Updated Feb 26, 2026
+// Real team data
 const overviewStats = {
   totalTasks: 1,
   completedTasks: 0,
@@ -32,16 +33,21 @@ const overviewStats = {
 
 const teamMembers = [
   {
+    id: 1,
     name: "Aromal V G",
+    phone: "+918281783052",
     task: "SEO - Product Solutions",
-    deadline: "Mar 1, 2026 (3 Days)",
+    deadline: "March 1, 2026",
+    daysRemaining: 3,
     priority: "High",
     status: "In Progress",
     efficiency: 0,
     tasksCompleted: 0,
+    tasksThisWeek: 1,
   },
 ];
 
+// Daily completion data (will be updated as work progresses)
 const dailyCompletion = [
   { day: "Mon", completed: 0 },
   { day: "Tue", completed: 0 },
@@ -52,36 +58,60 @@ const dailyCompletion = [
   { day: "Sun", completed: 0 },
 ];
 
+// Weekly efficiency (will be calculated from actual data)
 const weeklyEfficiency = [
   { week: "Week 1", efficiency: 0 },
-  { week: "Week 2", efficiency: 0 },
-  { week: "Week 3", efficiency: 0 },
-  { week: "Week 4", efficiency: 0 },
 ];
 
+// Check-in status for today
 const checkInStatus = {
   morning: false,
   afternoon: false,
   evening: false,
 };
 
+// Recent activity log
 const recentActivity = [
-  { time: "Feb 26, 2026", event: "Dashboard link sent to Aromal V G", type: "update" },
-  { time: "Feb 26, 2026", event: "Task assigned: SEO - Product Solutions (High Priority)", type: "task" },
-  { time: "Feb 26, 2026", event: "Daily check-ins scheduled: 9AM, 2PM, 7PM", type: "checkin" },
-  { time: "Feb 26, 2026", event: "Deadline set: March 1, 2026", type: "alert" },
-  { time: "Feb 26, 2026", event: "Team member Aromal V G onboarded", type: "member" },
+  { time: "Today, 9:30 PM", event: "Dashboard deployed and shared with team", type: "update" },
+  { time: "Today, 12:14 PM", event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
+  { time: "Today, 12:10 PM", event: "Aromal V G added to team", type: "member" },
+  { time: "Today, 12:00 PM", event: "Team management system initialized", type: "system" },
 ];
 
 export default function Dashboard() {
-  const [selectedMember, setSelectedMember] = useState(teamMembers[0]);
+  const [selectedMember] = useState(teamMembers[0]);
+  const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setLastUpdated(new Date());
+  }, []);
+
+  const handleRefresh = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setLastUpdated(new Date());
+      setIsLoading(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 md:p-6">
       {/* Header */}
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Team Performance Dashboard</h1>
-        <p className="text-gray-400">Real-time task tracking and team metrics</p>
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-2">Team Performance Dashboard</h1>
+            <p className="text-gray-400">Real-time task tracking and team metrics</p>
+          </div>
+          <button
+            onClick={handleRefresh}
+            className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors"
+          >
+            <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
+            Refresh
+          </button>
+        </div>
       </header>
 
       {/* Section 1: Overview Cards */}
@@ -141,6 +171,7 @@ export default function Dashboard() {
                 <Calendar className="w-4 h-4 text-yellow-400" />
                 <span className="text-yellow-400 font-semibold">{selectedMember.deadline}</span>
               </div>
+              <p className="text-sm text-gray-500 mt-1">{selectedMember.daysRemaining} days remaining</p>
             </div>
             <div>
               <p className="text-gray-400 text-sm mb-1">Priority</p>
@@ -160,13 +191,14 @@ export default function Dashboard() {
             <div>
               <p className="text-gray-400 text-sm mb-1">Efficiency Score</p>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-green-400" />
-                <span className="text-2xl font-bold text-green-400">{selectedMember.efficiency}%</span>
+                <TrendingUp className="w-4 h-4 text-gray-400" />
+                <span className="text-2xl font-bold text-gray-400">{selectedMember.efficiency}%</span>
+                <span className="text-xs text-gray-500">(No data yet)</span>
               </div>
             </div>
             <div>
               <p className="text-gray-400 text-sm mb-1">Tasks This Week</p>
-              <p className="text-2xl font-bold">{selectedMember.tasksCompleted}</p>
+              <p className="text-2xl font-bold">{selectedMember.tasksThisWeek}</p>
             </div>
           </div>
         </div>
@@ -215,7 +247,7 @@ export default function Dashboard() {
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
           <Activity className="w-5 h-5" />
-          Today's Check-in Status
+          Today&apos;s Check-in Status
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className={`rounded-xl p-6 border ${checkInStatus.morning ? "bg-green-500/10 border-green-500" : "bg-gray-800 border-gray-700"}`}>
@@ -272,7 +304,8 @@ export default function Dashboard() {
                 item.type === "update" ? "bg-blue-400" :
                 item.type === "checkin" ? "bg-green-400" :
                 item.type === "task" ? "bg-purple-400" :
-                item.type === "alert" ? "bg-red-400" : "bg-gray-400"
+                item.type === "alert" ? "bg-red-400" :
+                item.type === "member" ? "bg-cyan-400" : "bg-gray-400"
               }`} />
               <div className="flex-1">
                 <p className="text-white">{item.event}</p>
@@ -285,7 +318,8 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-        <p>Team Dashboard • Last updated: {new Date().toLocaleString()}</p>
+        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString()}</p>
+        <p className="mt-1">Auto-updates daily at 12:30 PM IST</p>
       </footer>
     </div>
   );

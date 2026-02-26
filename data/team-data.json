@@ -1,0 +1,42 @@
+{
+  "lastUpdated": "2026-02-26T21:30:00+05:30",
+  "team": [
+    {
+      "id": 1,
+      "name": "Aromal V G",
+      "phone": "+918281783052",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "SEO - Product Solutions",
+          "assignedDate": "2026-02-26",
+          "deadline": "2026-03-01",
+          "priority": "High",
+          "status": "In Progress",
+          "progress": 0,
+          "checkIns": {
+            "morning": false,
+            "afternoon": false,
+            "evening": false
+          },
+          "dailyCompletion": {
+            "Mon": 0,
+            "Tue": 0,
+            "Wed": 0,
+            "Thu": 0,
+            "Fri": 0,
+            "Sat": 0,
+            "Sun": 0
+          },
+          "activity": []
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalTasks": 1,
+    "completedTasks": 0,
+    "pendingTasks": 1,
+    "overdueTasks": 0
+  }
+}
