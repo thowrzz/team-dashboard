@@ -259,7 +259,7 @@ export default function MemberClient({ memberId }: { memberId: number }) {
           Today&apos;s Check-ins
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {Object.entries(member.checkIns).map(([key, checkIn]) => (
+          {Object.entries(member.checkIns).map(([key, checkIn]: [string, any]) => (
             <div
               key={key}
               className={`p-4 rounded-lg border ${
