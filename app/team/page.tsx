@@ -23,7 +23,8 @@ const teamMembers = [
     id: 1,
     name: "Aromal V G",
     phone: "+918281783052",
-    email: "aromal@example.com",
+    email: "aromalvijayan448@gmail.com",
+    avatar: "/team-dashboard/aromal.jpg",
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
@@ -120,9 +121,17 @@ export default function TeamPage() {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 {/* Member Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <User className="w-8 h-8 text-white" />
-                  </div>
+                  {member.avatar ? (
+                    <img 
+                      src={member.avatar} 
+                      alt={member.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <User className="w-8 h-8 text-white" />
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-lg font-semibold">{member.name}</h3>
                     <p className="text-gray-400">{member.role}</p>

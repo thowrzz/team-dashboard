@@ -28,7 +28,8 @@ const getMemberData = (id: number) => ({
   id,
   name: "Aromal V G",
   phone: "+918281783052",
-  email: "aromal@example.com",
+  email: "aromalvijayan448@gmail.com",
+  avatar: "/team-dashboard/aromal.jpg",
   role: "SEO Specialist",
   joinedDate: "2026-02-26",
   tasks: [
@@ -119,9 +120,17 @@ export default function MemberClient({ memberId }: { memberId: number }) {
       {/* Member Info Card */}
       <section className="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-6">
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-            <User className="w-12 h-12 text-white" />
-          </div>
+          {member.avatar ? (
+            <img 
+              src={member.avatar} 
+              alt={member.name}
+              className="w-24 h-24 rounded-full object-cover border-2 border-blue-500 flex-shrink-0"
+            />
+          ) : (
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <User className="w-12 h-12 text-white" />
+            </div>
+          )}
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex items-center gap-2 text-gray-400">
               <Phone className="w-4 h-4" />

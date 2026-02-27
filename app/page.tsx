@@ -32,6 +32,8 @@ const teamMembers = [
     id: 1,
     name: "Aromal V G",
     phone: "+918281783052",
+    email: "aromalvijayan448@gmail.com",
+    avatar: "/team-dashboard/aromal.jpg",
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
@@ -190,9 +192,17 @@ export default function Dashboard() {
             <Link key={member.id} href={`/team/${member.id}`} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <User className="w-6 h-6 text-white" />
-                  </div>
+                  {member.avatar ? (
+                    <img 
+                      src={member.avatar} 
+                      alt={member.name}
+                      className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <User className="w-6 h-6 text-white" />
+                    </div>
+                  )}
                   <div>
                     <p className="font-semibold">{member.name}</p>
                     <p className="text-gray-400 text-sm">{member.role}</p>
