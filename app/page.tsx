@@ -1,6 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import {
+  Users,
+  CheckCircle,
+  Clock,
+  AlertTriangle,
+  TrendingUp,
+  Calendar,
+  Activity,
+  RefreshCw,
+  User,
+  ChevronRight,
+} from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -12,42 +25,41 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import {
-  CheckCircle,
-  Clock,
-  AlertTriangle,
-  Users,
-  TrendingUp,
-  Calendar,
-  Activity,
-  RefreshCw,
-} from "lucide-react";
 
-// Real team data
-const overviewStats = {
-  totalTasks: 1,
-  completedTasks: 0,
-  pendingTasks: 1,
-  overdueTasks: 0,
-};
-
+// Team members data
 const teamMembers = [
   {
     id: 1,
     name: "Aromal V G",
     phone: "+918281783052",
+    role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
     daysRemaining: 3,
     priority: "High",
     status: "In Progress",
+    progress: 25,
     efficiency: 0,
     tasksCompleted: 0,
     tasksThisWeek: 1,
+    checkIns: {
+      morning: false,
+      afternoon: false,
+      evening: false,
+    },
+    lastActive: "2026-02-26T23:30:00+05:30",
   },
 ];
 
-// Daily completion data (will be updated as work progresses)
+// Overview stats
+const getOverviewStats = () => ({
+  totalTasks: teamMembers.length,
+  completedTasks: teamMembers.filter(m => m.progress === 100).length,
+  pendingTasks: teamMembers.filter(m => m.progress < 100 && m.progress > 0).length,
+  overdueTasks: teamMembers.filter(m => m.daysRemaining <= 0 && m.progress < 100).length,
+});
+
+// Daily completion
 const dailyCompletion = [
   { day: "Mon", completed: 0 },
   { day: "Tue", completed: 0 },
@@ -58,44 +70,36 @@ const dailyCompletion = [
   { day: "Sun", completed: 0 },
 ];
 
-// Weekly efficiency (will be calculated from actual data)
 const weeklyEfficiency = [
   { week: "Week 1", efficiency: 0 },
 ];
 
-// Check-in status for today
-const checkInStatus = {
-  morning: false,
-  afternoon: false,
-  evening: false,
+// Format time in IST
+const formatTimeIST = (dateStr: string) => {
+  return new Date(dateStr).toLocaleString('en-IN', {
+    timeZone: 'Asia/Calcutta',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
 };
 
-// Recent activity log - times will be dynamically generated
 const getRecentActivity = () => {
   const now = new Date();
-  const formatTime = (date: Date) => {
-    return date.toLocaleString('en-IN', { 
-      timeZone: 'Asia/Calcutta', 
-      month: 'short', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: '2-digit',
-      hour12: true 
-    });
-  };
-  
   return [
-    { time: formatTime(now), event: "Dashboard deployed and shared with team", type: "update" },
-    { time: formatTime(new Date(now.getTime() - 10 * 60 * 1000)), event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
-    { time: formatTime(new Date(now.getTime() - 15 * 60 * 1000)), event: "Aromal V G added to team", type: "member" },
-    { time: formatTime(new Date(now.getTime() - 20 * 60 * 1000)), event: "Team management system initialized", type: "system" },
+    { timestamp: now.toISOString(), event: "Dashboard deployed and shared with team", type: "update" },
+    { timestamp: new Date(now.getTime() - 11 * 60 * 60 * 1000).toISOString(), event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
+    { timestamp: new Date(now.getTime() - 11.5 * 60 * 60 * 1000).toISOString(), event: "Aromal V G added to team", type: "member" },
+    { timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(), event: "Team management system initialized", type: "system" },
   ];
 };
 
 export default function Dashboard() {
-  const [selectedMember] = useState(teamMembers[0]);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
+  const overviewStats = getOverviewStats();
   const recentActivity = getRecentActivity();
 
   useEffect(() => {
@@ -119,13 +123,19 @@ export default function Dashboard() {
             <h1 className="text-3xl font-bold text-white mb-2">Team Performance Dashboard</h1>
             <p className="text-gray-400">Real-time task tracking and team metrics</p>
           </div>
-          <button
-            onClick={handleRefresh}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors"
-          >
-            <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
-            Refresh
-          </button>
+          <div className="flex items-center gap-4">
+            <Link href="/team" className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              Team View
+            </Link>
+            <button
+              onClick={handleRefresh}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors"
+            >
+              <RefreshCw className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`} />
+              Refresh
+            </button>
+          </div>
         </div>
       </header>
 
@@ -164,58 +174,60 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Section 2: Team Member Stats */}
+      {/* Section 2: Team Members Quick View */}
       <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <Users className="w-5 h-5" />
-          Team Member Stats
-        </h2>
-        <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Member</p>
-              <p className="text-lg font-semibold">{selectedMember.name}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Current Task</p>
-              <p className="text-lg font-semibold text-blue-400">{selectedMember.task}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Deadline</p>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-yellow-400" />
-                <span className="text-yellow-400 font-semibold">{selectedMember.deadline}</span>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
+            <Users className="w-5 h-5" />
+            Team Members
+          </h2>
+          <Link href="/team" className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm">
+            View All <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {teamMembers.map((member) => (
+            <Link key={member.id} href={`/team/${member.id}`} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <User className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{member.name}</p>
+                    <p className="text-gray-400 text-sm">{member.role}</p>
+                  </div>
+                </div>
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  member.status === "Completed" ? "bg-green-500/20 text-green-400" :
+                  member.status === "In Progress" ? "bg-blue-500/20 text-blue-400" :
+                  "bg-yellow-500/20 text-yellow-400"
+                }`}>
+                  {member.status}
+                </span>
               </div>
-              <p className="text-sm text-gray-500 mt-1">{selectedMember.daysRemaining} days remaining</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Priority</p>
-              <span className="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm font-medium">
-                {selectedMember.priority}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 pt-6 border-t border-gray-700">
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Status</p>
-              <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">
-                {selectedMember.status}
-              </span>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Efficiency Score</p>
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-gray-400" />
-                <span className="text-2xl font-bold text-gray-400">{selectedMember.efficiency}%</span>
-                <span className="text-xs text-gray-500">(No data yet)</span>
+              
+              <div className="mb-3">
+                <div className="flex justify-between text-sm mb-1">
+                  <span className="text-gray-400">Progress</span>
+                  <span className="text-white font-medium">{member.progress}%</span>
+                </div>
+                <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full transition-all duration-500"
+                    style={{ width: `${member.progress}%` }}
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-1">Tasks This Week</p>
-              <p className="text-2xl font-bold">{selectedMember.tasksThisWeek}</p>
-            </div>
-          </div>
+              
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-400">{member.task}</span>
+                <span className={`${member.daysRemaining <= 1 ? "text-red-400" : "text-yellow-400"}`}>
+                  {member.daysRemaining} days left
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -228,9 +240,7 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="day" stroke="#9CA3AF" />
               <YAxis stroke="#9CA3AF" />
-              <Tooltip
-                contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }}
-              />
+              <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }} />
               <Bar dataKey="completed" fill="#3B82F6" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -243,73 +253,14 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="week" stroke="#9CA3AF" />
               <YAxis stroke="#9CA3AF" domain={[0, 100]} />
-              <Tooltip
-                contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }}
-              />
-              <Line
-                type="monotone"
-                dataKey="efficiency"
-                stroke="#10B981"
-                strokeWidth={3}
-                dot={{ fill: "#10B981", strokeWidth: 2 }}
-              />
+              <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }} />
+              <Line type="monotone" dataKey="efficiency" stroke="#10B981" strokeWidth={3} dot={{ fill: "#10B981", strokeWidth: 2 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </section>
 
-      {/* Section 4: Daily Check-in Status */}
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-          <Activity className="w-5 h-5" />
-          Today&apos;s Check-in Status
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className={`rounded-xl p-6 border ${checkInStatus.morning ? "bg-green-500/10 border-green-500" : "bg-gray-800 border-gray-700"}`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-400 text-sm">Morning Check</p>
-                <p className="text-lg font-semibold mt-1">9:00 AM</p>
-              </div>
-              {checkInStatus.morning ? (
-                <CheckCircle className="w-8 h-8 text-green-400" />
-              ) : (
-                <Clock className="w-8 h-8 text-gray-500" />
-              )}
-            </div>
-          </div>
-
-          <div className={`rounded-xl p-6 border ${checkInStatus.afternoon ? "bg-green-500/10 border-green-500" : "bg-gray-800 border-gray-700"}`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-400 text-sm">Afternoon Check</p>
-                <p className="text-lg font-semibold mt-1">2:00 PM</p>
-              </div>
-              {checkInStatus.afternoon ? (
-                <CheckCircle className="w-8 h-8 text-green-400" />
-              ) : (
-                <Clock className="w-8 h-8 text-gray-500" />
-              )}
-            </div>
-          </div>
-
-          <div className={`rounded-xl p-6 border ${checkInStatus.evening ? "bg-green-500/10 border-green-500" : "bg-gray-800 border-gray-700"}`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-400 text-sm">Evening Check</p>
-                <p className="text-lg font-semibold mt-1">7:00 PM</p>
-              </div>
-              {checkInStatus.evening ? (
-                <CheckCircle className="w-8 h-8 text-green-400" />
-              ) : (
-                <Clock className="w-8 h-8 text-gray-500" />
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: Recent Activity Feed */}
+      {/* Section 4: Recent Activity */}
       <section>
         <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
         <div className="bg-gray-800 rounded-xl border border-gray-700 divide-y divide-gray-700">
@@ -324,7 +275,7 @@ export default function Dashboard() {
               }`} />
               <div className="flex-1">
                 <p className="text-white">{item.event}</p>
-                <p className="text-gray-500 text-sm">{item.time}</p>
+                <p className="text-gray-500 text-sm">{formatTimeIST(item.timestamp)}</p>
               </div>
             </div>
           ))}
@@ -333,7 +284,7 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta', dateStyle: 'medium', timeStyle: 'short' })} IST</p>
+        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' })}</p>
         <p className="mt-1">Auto-updates daily at 12:30 PM IST</p>
       </footer>
     </div>
