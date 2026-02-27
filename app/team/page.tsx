@@ -44,6 +44,31 @@ const teamMembers = [
     lastActive: "2026-02-26T23:30:00+05:30",
     joinedDate: "2026-02-26",
   },
+  {
+    id: 2,
+    name: "Adarsh B S",
+    phone: "+919400355185",
+    email: "adarshsarachandran@gmail.com",
+    avatar: null,
+    role: "Manager",
+    task: "Team Management",
+    deadline: "Ongoing",
+    daysRemaining: 0,
+    priority: "High",
+    status: "Active",
+    progress: 100,
+    efficiency: 95,
+    tasksCompleted: 12,
+    tasksThisWeek: 5,
+    totalTasks: 5,
+    checkIns: {
+      morning: true,
+      afternoon: true,
+      evening: true,
+    },
+    lastActive: "2026-02-27T19:30:00+05:30",
+    joinedDate: "2026-01-01",
+  },
 ];
 
 const formatTimeIST = (dateStr: string) => {

@@ -24,43 +24,85 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const getMemberData = (id: number) => ({
-  id,
-  name: "Aromal V G",
-  phone: "+918281783052",
-  email: "aromalvijayan448@gmail.com",
-  avatar: "/team-dashboard/aromal.jpg",
-  role: "SEO Specialist",
-  joinedDate: "2026-02-26",
-  tasks: [
-    {
+const getMemberData = (id: number) => {
+  const members: Record<number, any> = {
+    1: {
       id: 1,
-      title: "SEO - Product Solutions",
-      deadline: "March 1, 2026",
-      daysRemaining: 3,
-      priority: "High",
-      status: "In Progress",
-      progress: 25,
-      description: "Optimize product pages for search engines",
+      name: "Aromal V G",
+      phone: "+918281783052",
+      email: "aromalvijayan448@gmail.com",
+      avatar: "/team-dashboard/aromal.jpg",
+      role: "SEO Specialist",
+      joinedDate: "2026-02-26",
+      tasks: [
+        {
+          id: 1,
+          title: "SEO - Product Solutions",
+          deadline: "March 1, 2026",
+          daysRemaining: 3,
+          priority: "High",
+          status: "In Progress",
+          progress: 25,
+          description: "Optimize product pages for search engines",
+        },
+      ],
+      checkIns: {
+        morning: { time: "9:00 AM", status: false },
+        afternoon: { time: "2:00 PM", status: false },
+        evening: { time: "7:00 PM", status: false },
+      },
+      activityLog: [
+        { timestamp: "2026-02-27T19:30:00+05:30", event: "Profile updated with photo and email", type: "update" },
+        { timestamp: "2026-02-26T23:30:00+05:30", event: "Dashboard link sent", type: "update" },
+        { timestamp: "2026-02-26T12:14:00+05:30", event: "Task assigned: SEO - Product Solutions", type: "task" },
+        { timestamp: "2026-02-26T12:10:00+05:30", event: "Added to team", type: "member" },
+      ],
+      stats: {
+        totalTasks: 1,
+        completedTasks: 0,
+        inProgress: 1,
+        efficiency: 0,
+      },
     },
-  ],
-  checkIns: {
-    morning: { time: "9:00 AM", status: false },
-    afternoon: { time: "2:00 PM", status: false },
-    evening: { time: "7:00 PM", status: false },
-  },
-  activityLog: [
-    { timestamp: "2026-02-26T23:30:00+05:30", event: "Dashboard link sent", type: "update" },
-    { timestamp: "2026-02-26T12:14:00+05:30", event: "Task assigned: SEO - Product Solutions", type: "task" },
-    { timestamp: "2026-02-26T12:10:00+05:30", event: "Added to team", type: "member" },
-  ],
-  stats: {
-    totalTasks: 1,
-    completedTasks: 0,
-    inProgress: 1,
-    efficiency: 0,
-  },
-});
+    2: {
+      id: 2,
+      name: "Adarsh B S",
+      phone: "+919400355185",
+      email: "adarshsarachandran@gmail.com",
+      avatar: null,
+      role: "Manager",
+      joinedDate: "2026-01-01",
+      tasks: [
+        {
+          id: 1,
+          title: "Team Management",
+          deadline: "Ongoing",
+          daysRemaining: 0,
+          priority: "High",
+          status: "Active",
+          progress: 100,
+          description: "Manage team members and track progress",
+        },
+      ],
+      checkIns: {
+        morning: { time: "9:00 AM", status: true },
+        afternoon: { time: "2:00 PM", status: true },
+        evening: { time: "7:00 PM", status: true },
+      },
+      activityLog: [
+        { timestamp: "2026-02-27T19:35:00+05:30", event: "Added to team dashboard", type: "member" },
+        { timestamp: "2026-02-26T12:00:00+05:30", event: "Team management system created", type: "system" },
+      ],
+      stats: {
+        totalTasks: 5,
+        completedTasks: 12,
+        inProgress: 1,
+        efficiency: 95,
+      },
+    },
+  };
+  return members[id] || null;
+};
 
 const dailyProgress = [
   { day: "Mon", hours: 0 },
