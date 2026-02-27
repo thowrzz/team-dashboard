@@ -303,7 +303,7 @@ export default function MemberClient({ memberId }: { memberId: number }) {
           Activity Log
         </h2>
         <div className="space-y-3">
-          {member.activityLog.map((item, index) => (
+          {member.activityLog.map((item: any, index: number) => (
             <div key={index} className="flex items-start gap-3">
               <div className={`w-2 h-2 rounded-full mt-2 ${
                 item.type === "update" ? "bg-blue-400" :
