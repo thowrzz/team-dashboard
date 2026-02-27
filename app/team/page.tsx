@@ -142,7 +142,7 @@ export default function TeamPage() {
           {teamMembers.map((member) => (
             <Link
               key={member.id}
-              href={`/team-dashboard/team/${member.slug}`}
+              href={`/team/${member.slug}`}
               className="block bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

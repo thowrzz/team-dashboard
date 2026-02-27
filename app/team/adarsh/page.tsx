@@ -96,7 +96,7 @@ export default function AdarshPage() {
       {/* Header */}
       <header className="mb-8">
         <div className="flex items-center gap-4 mb-4">
-          <Link href="/team-dashboard/team" className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+          <Link href="/team" className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
