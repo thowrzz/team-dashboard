@@ -34,6 +34,7 @@ const teamMembers = [
     phone: "+918281783052",
     email: "aromalvijayan448@gmail.com",
     avatar: "/team-dashboard/aromal.jpg",
+    slug: "aromal",
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
@@ -57,6 +58,7 @@ const teamMembers = [
     phone: "+919400355185",
     email: "adarshsarachandran@gmail.com",
     avatar: null,
+    slug: "adarsh",
     role: "Manager",
     task: "Team Management",
     deadline: "Ongoing",
@@ -206,13 +208,13 @@ export default function Dashboard() {
             <Users className="w-5 h-5" />
             Team Members
           </h2>
-          <Link href="/team" className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm">
+          <Link href="/team-dashboard/team" className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm">
             View All <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {teamMembers.map((member) => (
-            <Link key={member.id} href={`/team/${member.id}`} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
+            <Link key={member.id} href={`/team-dashboard/team/${member.slug}`} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {member.avatar ? (

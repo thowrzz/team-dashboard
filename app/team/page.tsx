@@ -25,6 +25,7 @@ const teamMembers = [
     phone: "+918281783052",
     email: "aromalvijayan448@gmail.com",
     avatar: "/team-dashboard/aromal.jpg",
+    slug: "aromal",
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
@@ -50,6 +51,7 @@ const teamMembers = [
     phone: "+919400355185",
     email: "adarshsarachandran@gmail.com",
     avatar: null,
+    slug: "adarsh",
     role: "Manager",
     task: "Team Management",
     deadline: "Ongoing",
@@ -140,7 +142,7 @@ export default function TeamPage() {
           {teamMembers.map((member) => (
             <Link
               key={member.id}
-              href={`/team/${member.id}`}
+              href={`/team-dashboard/team/${member.slug}`}
               className="block bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
