@@ -70,18 +70,33 @@ const checkInStatus = {
   evening: false,
 };
 
-// Recent activity log
-const recentActivity = [
-  { time: "Today, 9:30 PM", event: "Dashboard deployed and shared with team", type: "update" },
-  { time: "Today, 12:14 PM", event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
-  { time: "Today, 12:10 PM", event: "Aromal V G added to team", type: "member" },
-  { time: "Today, 12:00 PM", event: "Team management system initialized", type: "system" },
-];
+// Recent activity log - times will be dynamically generated
+const getRecentActivity = () => {
+  const now = new Date();
+  const formatTime = (date: Date) => {
+    return date.toLocaleString('en-IN', { 
+      timeZone: 'Asia/Calcutta', 
+      month: 'short', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: '2-digit',
+      hour12: true 
+    });
+  };
+  
+  return [
+    { time: formatTime(now), event: "Dashboard deployed and shared with team", type: "update" },
+    { time: formatTime(new Date(now.getTime() - 10 * 60 * 1000)), event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
+    { time: formatTime(new Date(now.getTime() - 15 * 60 * 1000)), event: "Aromal V G added to team", type: "member" },
+    { time: formatTime(new Date(now.getTime() - 20 * 60 * 1000)), event: "Team management system initialized", type: "system" },
+  ];
+};
 
 export default function Dashboard() {
   const [selectedMember] = useState(teamMembers[0]);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
+  const recentActivity = getRecentActivity();
 
   useEffect(() => {
     setLastUpdated(new Date());
@@ -318,7 +333,7 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString()}</p>
+        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta', dateStyle: 'medium', timeStyle: 'short' })} IST</p>
         <p className="mt-1">Auto-updates daily at 12:30 PM IST</p>
       </footer>
     </div>
