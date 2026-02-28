@@ -76,13 +76,37 @@ const teamMembers = [
     },
     lastActive: "2026-02-28T07:10:00+05:30",
   },
+  {
+    id: 3,
+    name: "Akhil Shibu",
+    phone: "+919061511805",
+    email: "Akhilshibu03@gmail.com",
+    avatar: "/team-dashboard/akhil.jpg",
+    slug: "akhil",
+    role: "Management & Documentation",
+    task: "Onboarding",
+    deadline: "Ongoing",
+    daysRemaining: 0,
+    priority: "Medium",
+    status: "Active",
+    progress: 50,
+    efficiency: 80,
+    tasksCompleted: 0,
+    tasksThisWeek: 0,
+    checkIns: {
+      morning: false,
+      afternoon: false,
+      evening: false,
+    },
+    lastActive: "2026-02-25T09:20:00+05:30",
+  },
 ];
 
 // Company Statistics (Real Data)
 const companyStats = {
   name: "Digital Product Solutions",
   founded: "2026-02-26",
-  teamSize: 2,
+  teamSize: 3,
   activeProjects: 1,
   completedProjects: 0,
   totalCheckInsToday: 4,
