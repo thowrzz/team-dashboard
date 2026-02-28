@@ -57,7 +57,7 @@ export default function AdarshPage() {
     name: "Adarsh B S",
     phone: "+919400355185",
     email: "adarshsarachandran@gmail.com",
-    avatar: null,
+    avatar: "/team-dashboard/adarsh.jpg",
     role: "Developer",
     joinedDate: "2026-01-01",
     tasks: [

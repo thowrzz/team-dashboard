@@ -50,7 +50,7 @@ const teamMembers = [
     name: "Adarsh B S",
     phone: "+919400355185",
     email: "adarshsarachandran@gmail.com",
-    avatar: null,
+    avatar: "/team-dashboard/adarsh.jpg",
     slug: "adarsh",
     role: "Developer",
     task: "Team Management",
