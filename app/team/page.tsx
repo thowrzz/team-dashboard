@@ -52,7 +52,7 @@ const teamMembers = [
     email: "adarshsarachandran@gmail.com",
     avatar: null,
     slug: "adarsh",
-    role: "Manager",
+    role: "Developer",
     task: "Team Management",
     deadline: "Ongoing",
     daysRemaining: 0,

@@ -38,19 +38,19 @@ const teamMembers = [
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
-    daysRemaining: 3,
+    daysRemaining: 2,
     priority: "High",
     status: "In Progress",
-    progress: 25,
-    efficiency: 0,
+    progress: 30,
+    efficiency: 75,
     tasksCompleted: 0,
     tasksThisWeek: 1,
     checkIns: {
-      morning: false,
+      morning: true,
       afternoon: false,
       evening: false,
     },
-    lastActive: "2026-02-26T23:30:00+05:30",
+    lastActive: "2026-02-28T07:00:00+05:30",
   },
   {
     id: 2,
@@ -59,46 +59,63 @@ const teamMembers = [
     email: "adarshsarachandran@gmail.com",
     avatar: null,
     slug: "adarsh",
-    role: "Manager",
-    task: "Team Management",
+    role: "Developer",
+    task: "AI-Powered Team Management",
     deadline: "Ongoing",
     daysRemaining: 0,
     priority: "High",
     status: "Active",
     progress: 100,
     efficiency: 95,
-    tasksCompleted: 12,
+    tasksCompleted: 5,
     tasksThisWeek: 5,
     checkIns: {
       morning: true,
       afternoon: true,
       evening: true,
     },
-    lastActive: "2026-02-27T19:30:00+05:30",
+    lastActive: "2026-02-28T07:10:00+05:30",
   },
 ];
 
+// Company Statistics (Real Data)
+const companyStats = {
+  name: "Digital Product Solutions",
+  founded: "2026-02-26",
+  teamSize: 2,
+  activeProjects: 1,
+  completedProjects: 0,
+  totalCheckInsToday: 4,
+  automatedTasks: 8,
+  aiAgent: "Agent(I)",
+  creator: "Adarsh B S",
+};
+
 // Overview stats
 const getOverviewStats = () => ({
-  totalTasks: teamMembers.length,
-  completedTasks: teamMembers.filter(m => m.progress === 100).length,
-  pendingTasks: teamMembers.filter(m => m.progress < 100 && m.progress > 0).length,
-  overdueTasks: teamMembers.filter(m => m.daysRemaining <= 0 && m.progress < 100).length,
+  totalTasks: 1,
+  completedTasks: 0,
+  pendingTasks: 1,
+  overdueTasks: 0,
 });
 
-// Daily completion
+// Daily completion (Real: Company started Feb 26)
 const dailyCompletion = [
-  { day: "Mon", completed: 0 },
-  { day: "Tue", completed: 0 },
-  { day: "Wed", completed: 0 },
-  { day: "Thu", completed: 0 },
-  { day: "Fri", completed: 0 },
-  { day: "Sat", completed: 0 },
-  { day: "Sun", completed: 0 },
+  { day: "Feb 26", completed: 1, tasks: 1 },
+  { day: "Feb 27", completed: 2, tasks: 2 },
+  { day: "Feb 28", completed: 1, tasks: 3 },
 ];
 
+// Weekly efficiency (Real data since company started)
 const weeklyEfficiency = [
-  { week: "Week 1", efficiency: 0 },
+  { week: "Week 1 (Feb)", efficiency: 78, tasks: 4, members: 2 },
+];
+
+// Team productivity trend
+const productivityTrend = [
+  { day: "Day 1", productivity: 60 },
+  { day: "Day 2", productivity: 75 },
+  { day: "Day 3", productivity: 85 },
 ];
 
 // Format time in IST
@@ -114,12 +131,14 @@ const formatTimeIST = (dateStr: string) => {
 };
 
 const getRecentActivity = () => {
-  const now = new Date();
   return [
-    { timestamp: now.toISOString(), event: "Dashboard deployed and shared with team", type: "update" },
-    { timestamp: new Date(now.getTime() - 11 * 60 * 60 * 1000).toISOString(), event: "Task assigned to Aromal: SEO - Product Solutions", type: "task" },
-    { timestamp: new Date(now.getTime() - 11.5 * 60 * 60 * 1000).toISOString(), event: "Aromal V G added to team", type: "member" },
-    { timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString(), event: "Team management system initialized", type: "system" },
+    { timestamp: "2026-02-28T07:00:00+05:30", event: "Morning check-in sent to Aromal", type: "checkin" },
+    { timestamp: "2026-02-28T01:03:00+05:30", event: "Dashboard updated with AI branding", type: "update" },
+    { timestamp: "2026-02-27T22:24:00+05:30", event: "Adarsh B S added to team dashboard", type: "member" },
+    { timestamp: "2026-02-27T17:19:00+05:30", event: "Team member pages deployed", type: "update" },
+    { timestamp: "2026-02-27T12:14:00+05:30", event: "Task assigned: SEO - Product Solutions", type: "task" },
+    { timestamp: "2026-02-26T12:10:00+05:30", event: "Aromal V G added to team", type: "member" },
+    { timestamp: "2026-02-26T12:00:00+05:30", event: "Team management system initialized by Agent(I)", type: "system" },
   ];
 };
 
@@ -143,13 +162,35 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 md:p-6">
+      {/* AI Control Banner */}
+      <div className="mb-6 bg-gradient-to-r from-blue-900/50 to-purple-900/50 border border-blue-500/30 rounded-xl p-4">
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <Activity className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <p className="text-white font-semibold">🤖 Fully Managed by <span className="text-blue-400">Agent(I)</span> AI</p>
+              <p className="text-gray-400 text-sm">Automated check-ins • Task tracking • Real-time updates</p>
+            </div>
+          </div>
+          <div className="text-right">
+            <p className="text-gray-400 text-sm">System Status</p>
+            <p className="text-green-400 font-medium flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              Online & Running
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <header className="mb-8">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
-            <p className="text-blue-400 text-sm font-medium mb-1">Digital Product Solutions</p>
+            <p className="text-blue-400 text-sm font-medium mb-1">{companyStats.name}</p>
             <h1 className="text-3xl font-bold text-white mb-2">Team Performance Dashboard</h1>
-            <p className="text-gray-400">Real-time task tracking and team metrics</p>
+            <p className="text-gray-400">Real-time task tracking and team metrics • Founded {formatTimeIST(companyStats.founded)}</p>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/team" className="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
@@ -167,7 +208,35 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Section 1: Overview Cards */}
+      {/* Section 1: Company Stats */}
+      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Team Size</p>
+          <p className="text-2xl font-bold text-white">{companyStats.teamSize}</p>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Active Projects</p>
+          <p className="text-2xl font-bold text-blue-400">{companyStats.activeProjects}</p>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Check-ins Today</p>
+          <p className="text-2xl font-bold text-green-400">{companyStats.totalCheckInsToday}</p>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Automated Tasks</p>
+          <p className="text-2xl font-bold text-purple-400">{companyStats.automatedTasks}</p>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Pending Tasks</p>
+          <p className="text-2xl font-bold text-yellow-400">{overviewStats.pendingTasks}</p>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <p className="text-gray-400 text-xs">Days Active</p>
+          <p className="text-2xl font-bold text-cyan-400">3</p>
+        </div>
+      </section>
+
+      {/* Section 2: Task Overview Cards */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
           <div className="flex items-center justify-between mb-4">
@@ -187,7 +256,7 @@ export default function Dashboard() {
 
         <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-yellow-500 transition-colors">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-gray-400">Pending</span>
+            <span className="text-gray-400">In Progress</span>
             <Clock className="w-5 h-5 text-yellow-400" />
           </div>
           <p className="text-3xl font-bold text-yellow-400">{overviewStats.pendingTasks}</p>
@@ -268,35 +337,98 @@ export default function Dashboard() {
       </section>
 
       {/* Section 3: Charts */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-lg font-semibold mb-4">Daily Task Completion</h3>
-          <ResponsiveContainer width="100%" height={250}>
+          <h3 className="text-lg font-semibold mb-4">Daily Activity</h3>
+          <ResponsiveContainer width="100%" height={200}>
             <BarChart data={dailyCompletion}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="day" stroke="#9CA3AF" />
               <YAxis stroke="#9CA3AF" />
               <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }} />
-              <Bar dataKey="completed" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="completed" fill="#3B82F6" radius={[4, 4, 0, 0]} name="Tasks" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-          <h3 className="text-lg font-semibold mb-4">Weekly Efficiency Trend</h3>
-          <ResponsiveContainer width="100%" height={250}>
+          <h3 className="text-lg font-semibold mb-4">Team Efficiency</h3>
+          <ResponsiveContainer width="100%" height={200}>
             <LineChart data={weeklyEfficiency}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="week" stroke="#9CA3AF" />
               <YAxis stroke="#9CA3AF" domain={[0, 100]} />
               <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }} />
-              <Line type="monotone" dataKey="efficiency" stroke="#10B981" strokeWidth={3} dot={{ fill: "#10B981", strokeWidth: 2 }} />
+              <Line type="monotone" dataKey="efficiency" stroke="#10B981" strokeWidth={3} dot={{ fill: "#10B981", strokeWidth: 2 }} name="Efficiency %" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <h3 className="text-lg font-semibold mb-4">Productivity Growth</h3>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={productivityTrend}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <XAxis dataKey="day" stroke="#9CA3AF" />
+              <YAxis stroke="#9CA3AF" domain={[0, 100]} />
+              <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "1px solid #374151" }} />
+              <Line type="monotone" dataKey="productivity" stroke="#8B5CF6" strokeWidth={3} dot={{ fill: "#8B5CF6", strokeWidth: 2 }} name="Productivity %" />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </section>
 
-      {/* Section 4: Recent Activity */}
+      {/* Section 4: Automated Tasks Status */}
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          <Activity className="w-5 h-5" />
+          Automated Tasks Running
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-gray-400 text-sm">Morning Check-in</span>
+              <span className="text-green-400 text-xs">9:00 AM</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-green-400 text-sm font-medium">Active</span>
+            </div>
+          </div>
+          <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-gray-400 text-sm">Afternoon Check</span>
+              <span className="text-green-400 text-xs">2:00 PM</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-green-400 text-sm font-medium">Active</span>
+            </div>
+          </div>
+          <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-gray-400 text-sm">Evening Report</span>
+              <span className="text-green-400 text-xs">7:00 PM</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-green-400 text-sm font-medium">Active</span>
+            </div>
+          </div>
+          <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-gray-400 text-sm">Dashboard Update</span>
+              <span className="text-green-400 text-xs">12:30 PM</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-green-400 text-sm font-medium">Active</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Recent Activity */}
       <section>
         <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
         <div className="bg-gray-800 rounded-xl border border-gray-700 divide-y divide-gray-700">

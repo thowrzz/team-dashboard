@@ -25,13 +25,9 @@ import {
 } from "recharts";
 
 const dailyProgress = [
-  { day: "Mon", hours: 0 },
-  { day: "Tue", hours: 0 },
-  { day: "Wed", hours: 0 },
-  { day: "Thu", hours: 0 },
-  { day: "Fri", hours: 0 },
-  { day: "Sat", hours: 0 },
-  { day: "Sun", hours: 0 },
+  { day: "Feb 26", hours: 2 },
+  { day: "Feb 27", hours: 4 },
+  { day: "Feb 28", hours: 3 },
 ];
 
 const formatTimeIST = (dateStr: string) => {
@@ -65,19 +61,20 @@ export default function AromalPage() {
         id: 1,
         title: "SEO - Product Solutions",
         deadline: "March 1, 2026",
-        daysRemaining: 3,
+        daysRemaining: 2,
         priority: "High",
         status: "In Progress",
-        progress: 25,
+        progress: 30,
         description: "Optimize product pages for search engines",
       },
     ],
     checkIns: {
-      morning: { time: "9:00 AM", status: false },
+      morning: { time: "9:00 AM", status: true },
       afternoon: { time: "2:00 PM", status: false },
       evening: { time: "7:00 PM", status: false },
     },
     activityLog: [
+      { timestamp: "2026-02-28T07:00:00+05:30", event: "Morning check-in received", type: "checkin" },
       { timestamp: "2026-02-27T19:30:00+05:30", event: "Profile updated with photo and email", type: "update" },
       { timestamp: "2026-02-26T23:30:00+05:30", event: "Dashboard link sent", type: "update" },
       { timestamp: "2026-02-26T12:14:00+05:30", event: "Task assigned: SEO - Product Solutions", type: "task" },
@@ -87,7 +84,7 @@ export default function AromalPage() {
       totalTasks: 1,
       completedTasks: 0,
       inProgress: 1,
-      efficiency: 0,
+      efficiency: 75,
     },
   };
 

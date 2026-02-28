@@ -58,18 +58,18 @@ export default function AdarshPage() {
     phone: "+919400355185",
     email: "adarshsarachandran@gmail.com",
     avatar: null,
-    role: "Manager",
+    role: "Developer",
     joinedDate: "2026-01-01",
     tasks: [
       {
         id: 1,
-        title: "Team Management",
+        title: "AI-Powered Team Management",
         deadline: "Ongoing",
         daysRemaining: 0,
         priority: "High",
         status: "Active",
         progress: 100,
-        description: "Manage team members and track progress",
+        description: "Developing and managing the AI-powered team tracking system",
       },
     ],
     checkIns: {
