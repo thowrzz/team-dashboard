@@ -147,6 +147,7 @@ export default function Dashboard() {
       <header className="mb-8">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
+            <p className="text-blue-400 text-sm font-medium mb-1">Digital Product Solutions</p>
             <h1 className="text-3xl font-bold text-white mb-2">Team Performance Dashboard</h1>
             <p className="text-gray-400">Real-time task tracking and team metrics</p>
           </div>
@@ -318,9 +319,16 @@ export default function Dashboard() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' })}</p>
-        <p className="mt-1">Auto-updates daily at 12:30 PM IST</p>
+      <footer className="mt-8 pt-6 border-t border-gray-700">
+        <div className="text-center">
+          <p className="text-white font-medium">Digital Product Solutions</p>
+          <p className="text-gray-400 text-sm mt-1">
+            Managed by <span className="text-blue-400 font-medium">Agent(I)</span> • Created by <span className="text-green-400 font-medium">Adarsh B S</span>
+          </p>
+          <p className="text-gray-500 text-xs mt-2">
+            Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' })} • Auto-updates daily at 12:30 PM IST
+          </p>
+        </div>
       </footer>
     </div>
   );

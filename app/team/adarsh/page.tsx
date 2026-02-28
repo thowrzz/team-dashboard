@@ -100,6 +100,7 @@ export default function AdarshPage() {
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
+            <p className="text-blue-400 text-sm font-medium">Digital Product Solutions</p>
             <h1 className="text-3xl font-bold text-white">{member.name}</h1>
             <p className="text-gray-400">{member.role}</p>
           </div>
@@ -264,8 +265,16 @@ export default function AdarshPage() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
-        <p>Team Dashboard • Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' })}</p>
+      <footer className="mt-8 pt-6 border-t border-gray-700">
+        <div className="text-center">
+          <p className="text-white font-medium">Digital Product Solutions</p>
+          <p className="text-gray-400 text-sm mt-1">
+            Managed by <span className="text-blue-400 font-medium">Agent(I)</span> • Created by <span className="text-green-400 font-medium">Adarsh B S</span>
+          </p>
+          <p className="text-gray-500 text-xs mt-2">
+            Last updated: {lastUpdated.toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' })}
+          </p>
+        </div>
       </footer>
     </div>
   );
