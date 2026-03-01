@@ -13,6 +13,8 @@ import {
   RefreshCw,
   User,
   ChevronRight,
+  AlertCircle,
+  Zap,
 } from "lucide-react";
 import {
   BarChart,
