@@ -15,6 +15,11 @@ import {
   ChevronRight,
   AlertCircle,
   Zap,
+  Target,
+  Flame,
+  Bell,
+  ArrowRight,
+  XCircle,
 } from "lucide-react";
 import {
   BarChart,
@@ -26,6 +31,9 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
 
 // Team members data
@@ -40,19 +48,24 @@ const teamMembers = [
     role: "SEO Specialist",
     task: "SEO - Product Solutions",
     deadline: "March 1, 2026",
-    daysRemaining: 2,
+    daysRemaining: -2, // Overdue
     priority: "High",
-    status: "In Progress",
+    status: "Overdue",
     progress: 30,
     efficiency: 75,
     tasksCompleted: 0,
     tasksThisWeek: 1,
     checkIns: {
-      morning: true,
+      morning: false,
       afternoon: false,
       evening: false,
     },
-    lastActive: "2026-02-28T07:00:00+05:30",
+    streak: {
+      current: 0,
+      best: 3,
+      checkInsToday: 0,
+    },
+    lastActive: "2026-03-02T14:30:00+05:30",
   },
   {
     id: 2,
@@ -76,7 +89,12 @@ const teamMembers = [
       afternoon: true,
       evening: true,
     },
-    lastActive: "2026-02-28T07:10:00+05:30",
+    streak: {
+      current: 12,
+      best: 12,
+      checkInsToday: 3,
+    },
+    lastActive: "2026-03-03T08:15:00+05:30",
   },
   {
     id: 3,
@@ -100,7 +118,12 @@ const teamMembers = [
       afternoon: false,
       evening: false,
     },
-    lastActive: "2026-02-25T09:20:00+05:30",
+    streak: {
+      current: 0,
+      best: 1,
+      checkInsToday: 0,
+    },
+    lastActive: "2026-03-02T10:00:00+05:30",
   },
 ];
 
@@ -122,7 +145,7 @@ const getOverviewStats = () => ({
   totalTasks: 1,
   completedTasks: 0,
   pendingTasks: 1,
-  overdueTasks: 0,
+  overdueTasks: 1, // Aromal's task is overdue
 });
 
 // Daily completion (Real: Company started Feb 26)
@@ -130,6 +153,9 @@ const dailyCompletion = [
   { day: "Feb 26", completed: 1, tasks: 1 },
   { day: "Feb 27", completed: 2, tasks: 2 },
   { day: "Feb 28", completed: 1, tasks: 3 },
+  { day: "Mar 1", completed: 0, tasks: 3 },
+  { day: "Mar 2", completed: 1, tasks: 4 },
+  { day: "Mar 3", completed: 0, tasks: 4 },
 ];
 
 // Weekly efficiency (Real data since company started)
@@ -209,6 +235,116 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* 🔔 TODAY'S ACTION ITEMS - New Feature! */}
+      <section className="mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Bell className="w-5 h-5 text-yellow-400" />
+          <h2 className="text-lg font-semibold">Today&apos;s Action Items</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Overdue Tasks Alert */}
+          {teamMembers.filter(m => m.daysRemaining < 0).length > 0 && (
+            <div className="bg-red-900/30 border border-red-500/50 rounded-xl p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <AlertTriangle className="w-5 h-5 text-red-400" />
+                <span className="text-red-400 font-medium">Overdue Tasks</span>
+              </div>
+              {teamMembers.filter(m => m.daysRemaining < 0).map(m => (
+                <div key={m.id} className="flex items-center justify-between text-sm">
+                  <span className="text-white">{m.name}</span>
+                  <span className="text-red-400">{Math.abs(m.daysRemaining)} days overdue</span>
+                </div>
+              ))}
+              <Link href="/team/aromal" className="mt-3 flex items-center gap-1 text-red-400 text-sm hover:text-red-300">
+                View Details <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+          )}
+
+          {/* Pending Check-ins */}
+          <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Clock className="w-5 h-5 text-yellow-400" />
+              <span className="text-yellow-400 font-medium">Pending Check-ins</span>
+            </div>
+            {teamMembers.filter(m => m.streak && m.streak.checkInsToday === 0 && m.id !== 2).map(m => (
+              <div key={m.id} className="flex items-center justify-between text-sm mb-1">
+                <span className="text-white">{m.name}</span>
+                <span className="text-yellow-400">No check-ins today</span>
+              </div>
+            ))}
+            <p className="text-gray-400 text-xs mt-2">Next automated check-in: 9:00 AM</p>
+          </div>
+
+          {/* Quick Wins */}
+          <div className="bg-green-900/30 border border-green-500/50 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="w-5 h-5 text-green-400" />
+              <span className="text-green-400 font-medium">Quick Wins</span>
+            </div>
+            <div className="text-sm text-white">
+              <p>• Review Aromal&apos;s overdue task</p>
+              <p>• Check team availability</p>
+              <p>• Update task progress</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🔥 TEAM STREAKS - New Feature! */}
+      <section className="mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Flame className="w-5 h-5 text-orange-400" />
+          <h2 className="text-lg font-semibold">Team Streaks</h2>
+          <span className="text-xs text-gray-400 ml-2">Check-in consistency tracker</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {teamMembers.map(member => (
+            <div key={member.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700 hover:border-orange-500/50 transition-colors">
+              <div className="flex items-center gap-3 mb-3">
+                {member.avatar ? (
+                  <img src={member.avatar} alt={member.name} className="w-10 h-10 rounded-full object-cover border-2 border-orange-500" />
+                ) : (
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
+                    <User className="w-5 h-5 text-white" />
+                  </div>
+                )}
+                <div>
+                  <p className="font-medium">{member.name}</p>
+                  <p className="text-gray-400 text-xs">{member.role}</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-2xl font-bold text-orange-400">{member.streak?.current || 0}</p>
+                  <p className="text-xs text-gray-400">Current Streak</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-lg font-semibold text-gray-500">{member.streak?.best || 0}</p>
+                  <p className="text-xs text-gray-400">Best</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-lg font-semibold text-green-400">{member.streak?.checkInsToday || 0}/3</p>
+                  <p className="text-xs text-gray-400">Today</p>
+                </div>
+              </div>
+              <div className="mt-3 flex gap-1">
+                {[0, 1, 2].map(i => (
+                  <div 
+                    key={i} 
+                    className={`h-2 flex-1 rounded-full ${
+                      i < (member.streak?.checkInsToday || 0) 
+                        ? 'bg-green-500' 
+                        : 'bg-gray-700'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Header */}
       <header className="mb-8">
