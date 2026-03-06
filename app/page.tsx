@@ -20,6 +20,13 @@ import {
   Bell,
   ArrowRight,
   XCircle,
+  Trophy,
+  Star,
+  Award,
+  Medal,
+  Sparkles,
+  Brain,
+  TrendingDown,
 } from "lucide-react";
 import {
   BarChart,
@@ -34,6 +41,11 @@ import {
   PieChart,
   Pie,
   Cell,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
 } from "recharts";
 
 // Team members data
@@ -169,6 +181,92 @@ const productivityTrend = [
   { day: "Day 2", productivity: 75 },
   { day: "Day 3", productivity: 85 },
 ];
+
+// 🏆 PERFORMANCE SCORECARD - Calculate performance scores
+const calculatePerformanceScore = (member: typeof teamMembers[0]) => {
+  let score = 0;
+  
+  // Check-in score (max 30 points)
+  const checkInScore = Math.min((member.streak?.checkInsToday || 0) * 10, 30);
+  score += checkInScore;
+  
+  // Streak bonus (max 20 points)
+  const streakBonus = Math.min((member.streak?.current || 0) * 2, 20);
+  score += streakBonus;
+  
+  // Progress score (max 30 points)
+  score += Math.floor((member.progress / 100) * 30);
+  
+  // Efficiency bonus (max 20 points)
+  score += Math.floor((member.efficiency / 100) * 20);
+  
+  return Math.min(score, 100);
+};
+
+const getPerformanceLevel = (score: number) => {
+  if (score >= 90) return { level: "Exceptional", color: "text-yellow-400", icon: "🏆" };
+  if (score >= 75) return { level: "Excellent", color: "text-green-400", icon: "⭐" };
+  if (score >= 50) return { level: "Good", color: "text-blue-400", icon: "👍" };
+  if (score >= 25) return { level: "Improving", color: "text-yellow-400", icon: "📈" };
+  return { level: "Needs Focus", color: "text-red-400", icon: "⚠️" };
+};
+
+// Get team leaderboard sorted by performance score
+const getLeaderboard = () => {
+  return [...teamMembers]
+    .map(m => ({ ...m, performanceScore: calculatePerformanceScore(m) }))
+    .sort((a, b) => b.performanceScore - a.performanceScore);
+};
+
+// Calculate days since company founded
+const getDaysActive = () => {
+  const founded = new Date("2026-02-26");
+  const today = new Date();
+  const diffTime = Math.abs(today.getTime() - founded.getTime());
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  return diffDays;
+};
+
+// Smart Insights Generator
+const getSmartInsights = () => {
+  const insights = [];
+  const leaderboard = getLeaderboard();
+  
+  // Top performer insight
+  const topPerformer = leaderboard[0];
+  if (topPerformer.performanceScore > 0) {
+    insights.push({
+      type: "success",
+      icon: <Trophy className="w-4 h-4" />,
+      title: "Top Performer",
+      message: `${topPerformer.name} leads with ${topPerformer.performanceScore}% performance score!`,
+    });
+  }
+  
+  // Check overdue tasks
+  const overdueCount = teamMembers.filter(m => m.daysRemaining < 0).length;
+  if (overdueCount > 0) {
+    insights.push({
+      type: "warning",
+      icon: <AlertTriangle className="w-4 h-4" />,
+      title: "Attention Needed",
+      message: `${overdueCount} team member(s) have overdue tasks requiring follow-up.`,
+    });
+  }
+  
+  // Streak analysis
+  const activeStreaks = teamMembers.filter(m => (m.streak?.current || 0) > 0).length;
+  if (activeStreaks > 0) {
+    insights.push({
+      type: "info",
+      icon: <Flame className="w-4 h-4" />,
+      title: "Streak Alert",
+      message: `${activeStreaks} team member(s) maintaining active check-in streaks!`,
+    });
+  }
+  
+  return insights;
+};
 
 // Format time in IST
 const formatTimeIST = (dateStr: string) => {
@@ -346,6 +444,100 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* 🏆 PERFORMANCE SCORECARD - NEW FEATURE! */}
+      <section className="mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Trophy className="w-5 h-5 text-yellow-400" />
+          <h2 className="text-lg font-semibold">Performance Scorecard</h2>
+          <span className="text-xs text-gray-400 ml-2">AI-calculated team rankings</span>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Leaderboard */}
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 border border-gray-700">
+            <h3 className="text-md font-semibold mb-4 flex items-center gap-2">
+              <Medal className="w-4 h-4 text-yellow-400" />
+              Team Leaderboard
+            </h3>
+            <div className="space-y-3">
+              {getLeaderboard().map((member, index) => {
+                const performance = getPerformanceLevel(member.performanceScore);
+                return (
+                  <div key={member.id} className={`flex items-center gap-4 p-3 rounded-lg ${
+                    index === 0 ? 'bg-yellow-900/20 border border-yellow-500/30' :
+                    index === 1 ? 'bg-gray-700/50 border border-gray-600' :
+                    'bg-gray-800/50'
+                  }`}>
+                    <div className={`text-2xl font-bold w-8 ${
+                      index === 0 ? 'text-yellow-400' :
+                      index === 1 ? 'text-gray-400' :
+                      'text-amber-600'
+                    }`}>
+                      {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="font-medium">{member.name}</p>
+                        <span className="text-xs">{performance.icon}</span>
+                      </div>
+                      <p className="text-gray-400 text-xs">{member.role}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className={`text-xl font-bold ${performance.color}`}>{member.performanceScore}%</p>
+                      <p className="text-xs text-gray-500">{performance.level}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          
+          {/* Smart Insights */}
+          <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded-xl p-6 border border-blue-500/30">
+            <h3 className="text-md font-semibold mb-4 flex items-center gap-2">
+              <Brain className="w-4 h-4 text-purple-400" />
+              Smart Insights
+            </h3>
+            <div className="space-y-3">
+              {getSmartInsights().map((insight, index) => (
+                <div key={index} className={`flex items-start gap-3 p-3 rounded-lg ${
+                  insight.type === 'success' ? 'bg-green-900/20 border border-green-500/30' :
+                  insight.type === 'warning' ? 'bg-yellow-900/20 border border-yellow-500/30' :
+                  'bg-blue-900/20 border border-blue-500/30'
+                }`}>
+                  <div className={`${
+                    insight.type === 'success' ? 'text-green-400' :
+                    insight.type === 'warning' ? 'text-yellow-400' :
+                    'text-blue-400'
+                  }`}>
+                    {insight.icon}
+                  </div>
+                  <div>
+                    <p className="font-medium text-white text-sm">{insight.title}</p>
+                    <p className="text-gray-400 text-xs">{insight.message}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Quick Stats */}
+            <div className="mt-4 grid grid-cols-3 gap-2">
+              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-green-400">{teamMembers.filter(m => m.progress > 50).length}</p>
+                <p className="text-xs text-gray-400">On Track</p>
+              </div>
+              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-yellow-400">{teamMembers.filter(m => m.progress > 0 && m.progress <= 50).length}</p>
+                <p className="text-xs text-gray-400">In Progress</p>
+              </div>
+              <div className="bg-gray-800/50 rounded-lg p-3 text-center">
+                <p className="text-2xl font-bold text-red-400">{teamMembers.filter(m => m.daysRemaining < 0).length}</p>
+                <p className="text-xs text-gray-400">Overdue</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Header */}
       <header className="mb-8">
         <div className="flex items-center justify-between flex-wrap gap-4">
@@ -394,7 +586,7 @@ export default function Dashboard() {
         </div>
         <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
           <p className="text-gray-400 text-xs">Days Active</p>
-          <p className="text-2xl font-bold text-cyan-400">3</p>
+          <p className="text-2xl font-bold text-cyan-400">{getDaysActive()}</p>
         </div>
       </section>
 
