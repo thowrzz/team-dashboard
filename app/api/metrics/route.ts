@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import * as fs from 'fs';
 import * as path from 'path';
 
+export const dynamic = "force-static";
+
 const DATA_FILE = path.join(process.cwd(), 'data/dashboard-metrics.json');
 
 export async function GET() {
