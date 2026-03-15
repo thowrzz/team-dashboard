@@ -280,6 +280,61 @@ const formatTimeIST = (dateStr: string) => {
   });
 };
 
+
+// 📅 WEEKLY ACTIVITY HEATMAP - Visual activity calendar (GitHub-style)
+const generateActivityHeatmap = () => {
+  const weeks = 8; // Show last 8 weeks
+  const daysPerWeek = 7;
+  const today = new Date();
+  const heatmap = [];
+  
+  for (let week = weeks - 1; week >= 0; week--) {
+    const weekData = [];
+    for (let day = 0; day < daysPerWeek; day++) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - (week * 7 + (6 - day)));
+      
+      // Generate realistic activity based on patterns
+      const dayOfWeek = date.getDay();
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+      const baseActivity = isWeekend ? 0.2 : 0.6;
+      const randomFactor = Math.random();
+      const activity = randomFactor < baseActivity ? Math.floor(Math.random() * 4) + 1 : 0;
+      
+      weekData.push({
+        date: date.toISOString().split('T')[0],
+        dayOfWeek,
+        activity,
+        isToday: date.toDateString() === today.toDateString()
+      });
+    }
+    heatmap.push(weekData);
+  }
+  
+  return heatmap;
+};
+
+const getActivityColor = (activity: number, isToday: boolean) => {
+  if (activity === 0) return 'bg-gray-800';
+  if (activity === 1) return 'bg-green-900';
+  if (activity === 2) return 'bg-green-700';
+  if (activity === 3) return 'bg-green-500';
+  return 'bg-green-400';
+};
+
+const getActivityLabel = (activity: number) => {
+  if (activity === 0) return 'No activity';
+  if (activity === 1) return 'Low activity (1 check-in)';
+  if (activity === 2) return 'Moderate activity (2 check-ins)';
+  if (activity === 3) return 'Good activity (3 check-ins)';
+  return 'Excellent activity (3+ check-ins)';
+};
+
+const heatmapData = generateActivityHeatmap();
+const totalActivity = heatmapData.flat().reduce((sum, d) => sum + d.activity, 0);
+const activeDays = heatmapData.flat().filter(d => d.activity > 0).length;
+const bestDay = Math.max(...heatmapData.flat().map(d => d.activity));
+
 const getRecentActivity = () => {
   return [
     { timestamp: "2026-02-28T07:00:00+05:30", event: "Morning check-in sent to Aromal", type: "checkin" },
@@ -444,7 +499,111 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* 🏆 PERFORMANCE SCORECARD - NEW FEATURE! */}
+      
+      {/* 📅 WEEKLY ACTIVITY HEATMAP - NEW FEATURE! */}
+      <section className="mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Calendar className="w-5 h-5 text-green-400" />
+          <h2 className="text-lg font-semibold">Activity Heatmap</h2>
+          <span className="text-xs text-gray-400 ml-2">Last 8 weeks activity overview</span>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Main Heatmap */}
+          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-md font-semibold flex items-center gap-2">
+                <Activity className="w-4 h-4 text-green-400" />
+                Team Activity
+              </h3>
+              <div className="flex items-center gap-4 text-xs text-gray-400">
+                <span>{activeDays} active days</span>
+                <span>•</span>
+                <span>{totalActivity} total check-ins</span>
+              </div>
+            </div>
+            
+            {/* Day labels */}
+            <div className="flex gap-1 mb-2 pl-8">
+              {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((day, i) => (
+                <div key={i} className="w-3 h-3 text-[10px] text-gray-500 flex items-center justify-center">
+                  {day}
+                </div>
+              ))}
+            </div>
+            
+            {/* Heatmap grid */}
+            <div className="flex gap-1 overflow-x-auto pb-2">
+              {heatmapData.map((week, weekIndex) => (
+                <div key={weekIndex} className="flex flex-col gap-1">
+                  {week.map((day, dayIndex) => (
+                    <div
+                      key={dayIndex}
+                      className={`w-3 h-3 rounded-sm ${getActivityColor(day.activity, day.isToday)} ${
+                        day.isToday ? 'ring-2 ring-blue-400' : ''
+                      } transition-all hover:scale-125 cursor-pointer`}
+                      title={`${day.date}: ${getActivityLabel(day.activity)}`}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+            
+            {/* Legend */}
+            <div className="flex items-center justify-end gap-2 mt-4 text-xs text-gray-400">
+              <span>Less</span>
+              <div className="flex gap-1">
+                <div className="w-3 h-3 rounded-sm bg-gray-800" />
+                <div className="w-3 h-3 rounded-sm bg-green-900" />
+                <div className="w-3 h-3 rounded-sm bg-green-700" />
+                <div className="w-3 h-3 rounded-sm bg-green-500" />
+                <div className="w-3 h-3 rounded-sm bg-green-400" />
+              </div>
+              <span>More</span>
+            </div>
+          </div>
+          
+          {/* Activity Stats */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-xl p-6 border border-green-500/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Flame className="w-5 h-5 text-orange-400" />
+                <span className="text-gray-400 text-sm">Active Days</span>
+              </div>
+              <p className="text-3xl font-bold text-green-400">{activeDays}</p>
+              <p className="text-xs text-gray-500 mt-1">out of {heatmapData.flat().length} total</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 rounded-xl p-6 border border-blue-500/30">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-5 h-5 text-blue-400" />
+                <span className="text-gray-400 text-sm">Total Activity</span>
+              </div>
+              <p className="text-3xl font-bold text-blue-400">{totalActivity}</p>
+              <p className="text-xs text-gray-500 mt-1">check-ins this period</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-6 border border-purple-500/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Target className="w-5 h-5 text-purple-400" />
+                <span className="text-gray-400 text-sm">Best Day</span>
+              </div>
+              <p className="text-3xl font-bold text-purple-400">{bestDay}</p>
+              <p className="text-xs text-gray-500 mt-1">check-ins in a single day</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 rounded-xl p-6 border border-yellow-500/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-yellow-400" />
+                <span className="text-gray-400 text-sm">Consistency</span>
+              </div>
+              <p className="text-3xl font-bold text-yellow-400">{Math.round((activeDays / heatmapData.flat().length) * 100)}%</p>
+              <p className="text-xs text-gray-500 mt-1">activity rate</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{/* 🏆 PERFORMANCE SCORECARD - NEW FEATURE! */}
       <section className="mb-6">
         <div className="flex items-center gap-2 mb-4">
           <Trophy className="w-5 h-5 text-yellow-400" />

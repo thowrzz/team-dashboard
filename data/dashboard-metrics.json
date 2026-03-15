@@ -1,0 +1,200 @@
+{
+  "lastUpdated": "2026-03-15T03:33:12.362Z",
+  "companyStats": {
+    "name": "Digital Product Solutions",
+    "founded": "2026-02-26",
+    "teamSize": 2,
+    "activeProjects": 1,
+    "completedProjects": 0,
+    "totalCheckInsToday": 0,
+    "automatedTasks": 8,
+    "aiAgent": "Agent(I)",
+    "creator": "Adarsh B S"
+  },
+  "team": [
+    {
+      "id": 1,
+      "name": "Aromal V G",
+      "phone": "+918281783052",
+      "email": "aromalvijayan448@gmail.com",
+      "avatar": "/team-dashboard/aromal.jpg",
+      "slug": "aromal",
+      "role": "SEO Specialist",
+      "task": {
+        "title": "SEO - Product Solutions",
+        "deadline": "2026-03-01",
+        "daysRemaining": -14,
+        "priority": "High",
+        "status": "Overdue",
+        "progress": 0,
+        "urgency": {
+          "emoji": "🚨",
+          "level": "critical",
+          "text": "OVERDUE"
+        }
+      },
+      "performance": {
+        "score": 0,
+        "tasksCompleted": 0,
+        "tasksThisWeek": 1
+      },
+      "checkIns": {
+        "morning": false,
+        "afternoon": false,
+        "evening": false
+      },
+      "lastActive": "2026-03-15T03:33:12.362Z"
+    },
+    {
+      "id": 2,
+      "name": "Akhil Shibu",
+      "phone": "+919061511805",
+      "email": "akhilshibu03@gmail.com",
+      "avatar": "/team-dashboard/akhil.jpg",
+      "slug": "akhil",
+      "role": "Management & Documentation",
+      "task": {
+        "title": "No active task",
+        "deadline": "",
+        "daysRemaining": 0,
+        "priority": "Normal",
+        "status": "Pending",
+        "progress": 0,
+        "urgency": {
+          "emoji": "⚠️",
+          "level": "urgent",
+          "text": "Due Today"
+        }
+      },
+      "performance": {
+        "score": 0,
+        "tasksCompleted": 0,
+        "tasksThisWeek": 0
+      },
+      "checkIns": {
+        "morning": false,
+        "afternoon": false,
+        "evening": false
+      },
+      "lastActive": "2026-03-15T03:33:12.362Z"
+    }
+  ],
+  "stats": {
+    "totalTasks": 1,
+    "completedTasks": 0,
+    "pendingTasks": 1,
+    "overdueTasks": 1
+  },
+  "charts": {
+    "dailyActivity": [
+      {
+        "day": "Mon",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Tue",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Wed",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Thu",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Fri",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Sat",
+        "completed": 0,
+        "tasks": 1
+      },
+      {
+        "day": "Sun",
+        "completed": 0,
+        "tasks": 1
+      }
+    ],
+    "weeklyEfficiency": [
+      {
+        "week": "Week 4 (Feb)",
+        "efficiency": 68,
+        "tasks": 1,
+        "members": 3
+      },
+      {
+        "week": "Week 1 (Mar)",
+        "efficiency": 78,
+        "tasks": 3,
+        "members": 2
+      },
+      {
+        "week": "Week 2 (Mar)",
+        "efficiency": 89,
+        "tasks": 3,
+        "members": 2
+      },
+      {
+        "week": "Week 3 (Mar)",
+        "efficiency": 77,
+        "tasks": 1,
+        "members": 3
+      }
+    ],
+    "productivityTrend": [
+      {
+        "day": "Day 1",
+        "productivity": 65
+      },
+      {
+        "day": "Day 2",
+        "productivity": 74
+      },
+      {
+        "day": "Day 3",
+        "productivity": 55
+      },
+      {
+        "day": "Day 4",
+        "productivity": 80
+      },
+      {
+        "day": "Day 5",
+        "productivity": 80
+      },
+      {
+        "day": "Day 6",
+        "productivity": 53
+      },
+      {
+        "day": "Day 7",
+        "productivity": 66
+      }
+    ]
+  },
+  "recentActivity": [
+    {
+      "type": "update",
+      "event": "Dashboard data synced",
+      "timestamp": "2026-03-15T03:33:12.362Z"
+    },
+    {
+      "type": "checkin",
+      "event": "2 team members tracked",
+      "timestamp": "2026-03-15T03:33:12.362Z"
+    },
+    {
+      "type": "task",
+      "event": "1 tasks monitored",
+      "timestamp": "2026-03-15T03:33:12.362Z"
+    }
+  ]
+}
