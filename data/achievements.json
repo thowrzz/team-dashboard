@@ -1,0 +1,100 @@
+{
+  "lastUpdated": "2026-03-17T03:50:00.000Z",
+  "achievements": [
+    {
+      "id": "first-checkin",
+      "name": "Early Bird",
+      "description": "Completed first morning check-in",
+      "icon": "🌅",
+      "category": "engagement",
+      "points": 10
+    },
+    {
+      "id": "streak-3",
+      "name": "On Fire",
+      "description": "3-day check-in streak",
+      "icon": "🔥",
+      "category": "streak",
+      "points": 25
+    },
+    {
+      "id": "streak-7",
+      "name": "Week Warrior",
+      "description": "7-day check-in streak",
+      "icon": "⚔️",
+      "category": "streak",
+      "points": 50
+    },
+    {
+      "id": "task-complete",
+      "name": "Task Crusher",
+      "description": "Completed first task",
+      "icon": "✅",
+      "category": "productivity",
+      "points": 30
+    },
+    {
+      "id": "perfect-day",
+      "name": "Perfect Day",
+      "description": "All 3 check-ins completed in one day",
+      "icon": "⭐",
+      "category": "engagement",
+      "points": 40
+    },
+    {
+      "id": "early-checkin",
+      "name": "Dawn Patrol",
+      "description": "Checked in before 9 AM",
+      "icon": "🏃",
+      "category": "engagement",
+      "points": 15
+    },
+    {
+      "id": "progress-50",
+      "name": "Halfway There",
+      "description": "Task progress reached 50%",
+      "icon": "📈",
+      "category": "productivity",
+      "points": 20
+    },
+    {
+      "id": "progress-100",
+      "name": "Mission Complete",
+      "description": "Task progress reached 100%",
+      "icon": "🏆",
+      "category": "productivity",
+      "points": 100
+    },
+    {
+      "id": "no-overdue",
+      "name": "Deadline Master",
+      "description": "No overdue tasks this week",
+      "icon": "🎯",
+      "category": "productivity",
+      "points": 35
+    },
+    {
+      "id": "team-player",
+      "name": "Team Player",
+      "description": "Helped a teammate (mentioned in activity)",
+      "icon": "🤝",
+      "category": "collaboration",
+      "points": 25
+    }
+  ],
+  "memberAchievements": {
+    "aromal": {
+      "points": 0,
+      "badges": [],
+      "streak": 0,
+      "lastCheckIn": null
+    },
+    "akhil": {
+      "points": 0,
+      "badges": [],
+      "streak": 0,
+      "lastCheckIn": null
+    }
+  },
+  "leaderboard": []
+}
