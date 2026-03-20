@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T07:07:00.000000+00:00",
+  "lastUpdated": "2026-03-19T08:30:00.000000+00:00",
   "team": [
     {
       "id": 1,
@@ -12,8 +12,8 @@
           "assignedDate": "2026-02-26",
           "deadline": "2026-03-01",
           "priority": "High",
-          "status": "Overdue",
-          "progress": 0,
+          "status": "Completed",
+          "progress": 100,
           "checkIns": {
             "morning": false,
             "afternoon": false,
@@ -28,8 +28,15 @@
             "Sat": 0,
             "Sun": 0
           },
-          "activity": [],
-          "daysRemaining": -15
+          "activity": [
+            {
+              "date": "2026-03-19",
+              "action": "Task marked as completed",
+              "type": "completion"
+            }
+          ],
+          "daysRemaining": -19,
+          "completedDate": "2026-03-19"
         }
       ]
     },
@@ -45,9 +52,9 @@
   ],
   "stats": {
     "totalTasks": 1,
-    "completedTasks": 0,
-    "pendingTasks": 1,
-    "overdueTasks": 1,
-    "teamHealthScore": 0
+    "completedTasks": 1,
+    "pendingTasks": 0,
+    "overdueTasks": 0,
+    "teamHealthScore": 100
   }
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag,  useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag, 
+import {
   Users,
   CheckCircle,
   Clock,
@@ -28,7 +28,7 @@ import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag,
   Brain,
   TrendingDown,
 } from "lucide-react";
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag, 
+import {
   BarChart,
   Bar,
   XAxis,
