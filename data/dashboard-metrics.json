@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T07:22:10.951Z",
+  "lastUpdated": "2026-03-21T05:16:56.773309",
   "companyStats": {
     "name": "Digital Product Solutions",
     "founded": "2026-02-26",
@@ -23,14 +23,14 @@
       "task": {
         "title": "SEO - Product Solutions",
         "deadline": "2026-03-01",
-        "daysRemaining": -14,
+        "daysRemaining": -20,
         "priority": "High",
         "status": "Overdue",
         "progress": 0,
         "urgency": {
-          "emoji": "🚨",
+          "emoji": "\ud83d\udea8",
           "level": "critical",
-          "text": "OVERDUE"
+          "text": "OVERDUE 20 days"
         }
       },
       "performance": {
@@ -43,7 +43,7 @@
         "afternoon": false,
         "evening": false
       },
-      "lastActive": "2026-03-15T03:33:12.362Z"
+      "lastActive": "2026-03-21T05:16:56.773309"
     },
     {
       "id": 2,
@@ -61,7 +61,7 @@
         "status": "Pending",
         "progress": 0,
         "urgency": {
-          "emoji": "⚠️",
+          "emoji": "\u26a0\ufe0f",
           "level": "urgent",
           "text": "Due Today"
         }
@@ -183,18 +183,23 @@
   "recentActivity": [
     {
       "type": "update",
-      "event": "Dashboard data synced",
-      "timestamp": "2026-03-15T03:33:12.362Z"
+      "event": "Dashboard auto-updated \u2014 Mar 21, 2026",
+      "timestamp": "2026-03-21T05:16:56.773309"
     },
     {
-      "type": "checkin",
-      "event": "2 team members tracked",
-      "timestamp": "2026-03-15T03:33:12.362Z"
+      "type": "outreach",
+      "event": "Outreach total: 26 messages sent",
+      "timestamp": "2026-03-21T05:16:56.773309"
+    },
+    {
+      "type": "student",
+      "event": "Panda \u2014 Day 1 of 30 day study plan",
+      "timestamp": "2026-03-21T05:16:56.773309"
     },
     {
       "type": "task",
-      "event": "1 tasks monitored",
-      "timestamp": "2026-03-15T03:33:12.362Z"
+      "event": "Aromal SEO task: 20 days overdue",
+      "timestamp": "2026-03-21T05:16:56.773309"
     }
   ]
 }
