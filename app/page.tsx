@@ -1,8 +1,13 @@
 "use client";
 
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag,  useState, useEffect } from "react";
-import Link from "next/link";
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag, 
+import { useState, useEffect } from "react";
+import {
+  Mail,
+  CheckSquare,
+  MessageSquare,
+  GitBranch,
+  Rocket,
+  Flag,
   Users,
   CheckCircle,
   Clock,
@@ -26,9 +31,9 @@ import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag,
   Medal,
   Sparkles,
   Brain,
-  TrendingDown,
+  TrendingDown
 } from "lucide-react";
-import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag, 
+import {
   BarChart,
   Bar,
   XAxis,
@@ -45,8 +50,9 @@ import { Mail, CheckSquare, MessageSquare, GitBranch, Rocket, Flag,
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
-  Radar,
+  Radar
 } from "recharts";
+import Link from "next/link";
 
 // Team members data
 const teamMembers = [
@@ -279,7 +285,6 @@ const formatTimeIST = (dateStr: string) => {
     hour12: true,
   });
 };
-
 
 // 📅 WEEKLY ACTIVITY HEATMAP - Visual activity calendar (GitHub-style)
 const generateActivityHeatmap = () => {

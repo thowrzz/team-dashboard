@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+
+export const dynamic = "force-static";
+
 export async function GET() {
   try {
     const achievementsPath = path.join(process.cwd(), 'data', 'achievements.json');

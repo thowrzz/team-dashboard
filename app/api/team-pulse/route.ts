@@ -28,6 +28,9 @@ interface TeamData {
   };
 }
 
+
+export const dynamic = "force-static";
+
 export async function GET() {
   try {
     const dataPath = path.join(process.cwd(), 'data', 'team-data.json');
