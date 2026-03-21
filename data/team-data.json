@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21T09:09:50.844129",
+  "lastUpdated": "2026-03-21T12:30:01.269136",
   "team": [
     {
       "id": 1,
@@ -58,9 +58,9 @@
     "teamHealthScore": 40
   },
   "outreach": {
-    "totalSent": 26,
+    "totalSent": 46,
     "sentToday": 20,
-    "leadsRemaining": 4974
+    "leadsRemaining": 4954
   },
   "student": {
     "name": "Panda",
