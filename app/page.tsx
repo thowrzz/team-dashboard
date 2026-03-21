@@ -1243,3 +1243,208 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
+
+// 🏆 ACHIEVEMENTS SYSTEM - NEW FEATURE!
+const getAchievements = () => {
+  const achievements = [];
+  const now = new Date();
+  const founded = new Date("2026-02-26");
+  const daysSinceStart = Math.floor((now.getTime() - founded.getTime()) / (1000 * 60 * 60 * 24));
+  
+  // Company milestones
+  if (daysSinceStart >= 1) {
+    achievements.push({
+      id: 'company-start',
+      title: 'Company Founded',
+      description: 'Digital Product Solutions began its journey',
+      date: 'Feb 26, 2026',
+      icon: '🚀',
+      type: 'milestone',
+      unlocked: true
+    });
+  }
+  
+  if (daysSinceStart >= 7) {
+    achievements.push({
+      id: 'week-one',
+      title: 'Week One Complete',
+      description: 'First week of operations completed',
+      date: 'Mar 5, 2026',
+      icon: '📅',
+      type: 'milestone',
+      unlocked: true
+    });
+  }
+  
+  // Outreach achievements
+  if (companyStats.totalCheckInsToday >= 3) {
+    achievements.push({
+      id: 'outreach-26',
+      title: 'First 26 Messages',
+      description: 'Sent 26 cold outreach messages',
+      date: 'Mar 21, 2026',
+      icon: '📧',
+      type: 'achievement',
+      unlocked: true
+    });
+  }
+  
+  // Student achievements
+  achievements.push({
+    id: 'student-start',
+    title: 'Mentorship Begins',
+    description: 'Started mentoring Panda on Digital Forensics',
+    date: 'Mar 21, 2026',
+    icon: '🎓',
+    type: 'milestone',
+    unlocked: true
+  });
+  
+  // Team achievements
+  achievements.push({
+    id: 'team-assembled',
+    title: 'Team Assembled',
+    description: 'Core team of 3 members formed',
+    date: 'Feb 26, 2026',
+    icon: '👥',
+    type: 'milestone',
+    unlocked: true
+  });
+  
+  // Locked achievements (future goals)
+  achievements.push({
+    id: 'outreach-100',
+    title: 'Outreach Century',
+    description: 'Send 100 cold outreach messages',
+    icon: '💯',
+    type: 'goal',
+    progress: 26,
+    target: 100,
+    unlocked: false
+  });
+  
+  achievements.push({
+    id: 'first-response',
+    title: 'First Response',
+    description: 'Receive first positive response from outreach',
+    icon: '💬',
+    type: 'goal',
+    unlocked: false
+  });
+  
+  achievements.push({
+    id: 'student-complete',
+    title: 'Course Complete',
+    description: 'Panda completes RAG training',
+    icon: '🏆',
+    type: 'goal',
+    progress: 14,
+    target: 100,
+    unlocked: false
+  });
+  
+  achievements.push({
+    id: 'team-health-70',
+    title: 'Healthy Team',
+    description: 'Team health score reaches 70+',
+    icon: '💚',
+    type: 'goal',
+    progress: 40,
+    target: 70,
+    unlocked: false
+  });
+  
+  return achievements;
+};
+
+// Achievement Badge Component
+const AchievementBadge = ({ achievement }: { achievement: ReturnType<typeof getAchievements>[0] }) => {
+  return (
+    <div className={`relative p-4 rounded-xl border ${
+      achievement.unlocked 
+        ? 'bg-gradient-to-br from-yellow-900/30 to-amber-900/30 border-yellow-500/50' 
+        : 'bg-gray-800/50 border-gray-700'
+    }`}>
+      {!achievement.unlocked && (
+        <div className="absolute inset-0 bg-gray-900/60 rounded-xl flex items-center justify-center">
+          <span className="text-2xl">🔒</span>
+        </div>
+      )}
+      <div className="flex items-start gap-3">
+        <span className="text-2xl">{achievement.icon}</span>
+        <div className="flex-1">
+          <p className={`font-semibold ${achievement.unlocked ? 'text-yellow-400' : 'text-gray-400'}`}>
+            {achievement.title}
+          </p>
+          <p className="text-xs text-gray-500 mt-1">{achievement.description}</p>
+          {achievement.date && (
+            <p className="text-xs text-gray-600 mt-1">📅 {achievement.date}</p>
+          )}
+          {achievement.progress !== undefined && (
+            <div className="mt-2">
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-gray-500">Progress</span>
+                <span className="text-gray-400">{achievement.progress}/{achievement.target}</span>
+              </div>
+              <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-yellow-500 rounded-full"
+                  style={{ width: `${((achievement.progress || 0) / (achievement.target || 100)) * 100}%` }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export function AchievementsSection() {
+  const achievements = getAchievements();
+  const unlocked = achievements.filter(a => a.unlocked);
+  const locked = achievements.filter(a => !a.unlocked);
+  
+  return (
+    <section className="mb-6">
+      <div className="flex items-center gap-2 mb-4">
+        <Trophy className="w-5 h-5 text-yellow-400" />
+        <h2 className="text-lg font-semibold">Achievements & Milestones</h2>
+        <span className="text-xs text-gray-400 ml-2">
+          {unlocked.length} unlocked • {locked.length} to go
+        </span>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {unlocked.slice(0, 5).map(achievement => (
+          <AchievementBadge key={achievement.id} achievement={achievement} />
+        ))}
+        {locked.slice(0, 3).map(achievement => (
+          <AchievementBadge key={achievement.id} achievement={achievement} />
+        ))}
+      </div>
+      
+      {/* Progress Summary */}
+      <div className="mt-4 bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-yellow-400">{unlocked.length}</p>
+              <p className="text-xs text-gray-400">Unlocked</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-gray-500">{locked.length}</p>
+              <p className="text-xs text-gray-400">Locked</p>
+            </div>
+          </div>
+          <div className="text-right">
+            <p className="text-sm text-gray-400">Next goal:</p>
+            <p className="text-yellow-400 font-medium">
+              {locked[0]?.title || 'All complete!'}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

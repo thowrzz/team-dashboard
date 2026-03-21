@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21T05:16:56.773309",
+  "lastUpdated": "2026-03-21T09:09:50.844129",
   "team": [
     {
       "id": 1,
@@ -64,35 +64,9 @@
   },
   "student": {
     "name": "Panda",
-    "phone": "+919778744342",
     "project": "Digital Memory Forensics (RAG)",
     "currentDay": 1,
-    "currentWeek": 1,
-    "totalDays": 7,
-    "status": "Active",
-    "progress": 14,
-    "streak": 1,
-    "lastSession": "2026-03-21T08:00:00+05:30",
-    "nextSession": "2026-03-21T10:00:00+05:30",
-    "topics": {
-      "covered": [
-        "What is Digital Forensics?"
-      ],
-      "remaining": [
-        "RAG Basics",
-        "Vector Databases",
-        "Embeddings",
-        "Similarity Search",
-        "LangChain/LlamaIndex",
-        "Week Review"
-      ]
-    },
-    "quizScores": [],
-    "attendance": {
-      "total": 1,
-      "present": 1,
-      "percentage": 100
-    },
-    "notes": "Started Week 1 - Understanding digital forensics fundamentals"
+    "week": 1,
+    "status": "Active"
   }
 }
