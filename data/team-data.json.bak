@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-22T19:41:52.090556Z",
+  "lastUpdated": "2026-03-22T19:11:37.139602Z",
   "team": [
     {
       "id": 1,
@@ -17,6 +17,15 @@
         },
         {
           "id": 2,
+          "title": "ACTUAL TASK NAME HERE",
+          "assignedDate": "2026-03-22",
+          "deadline": "2026-03-28",
+          "priority": "High",
+          "status": "In Progress",
+          "progress": 0
+        },
+        {
+          "id": 3,
           "title": "Poster for Client",
           "assignedDate": "2026-03-21",
           "deadline": "2026-03-23",
@@ -36,9 +45,9 @@
     }
   ],
   "stats": {
-    "totalTasks": 2,
+    "totalTasks": 3,
     "completedTasks": 1,
-    "pendingTasks": 1,
+    "pendingTasks": 2,
     "overdueTasks": 0,
     "teamHealthScore": 75
   },
