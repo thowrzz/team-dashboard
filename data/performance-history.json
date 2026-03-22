@@ -1,0 +1,41 @@
+{
+  "history": [
+    {
+      "date": "2026-03-22",
+      "timestamp": "2026-03-22T10:42:43.598659",
+      "stats": {
+        "totalTasks": 2,
+        "completedTasks": 1,
+        "pendingTasks": 1,
+        "overdueTasks": 0,
+        "teamHealthScore": 75
+      },
+      "outreach": {
+        "totalSent": 26,
+        "sentToday": 3
+      },
+      "student": {
+        "name": "Panda",
+        "progress": 0,
+        "streak": 1,
+        "attendance": 100
+      },
+      "team": [
+        {
+          "name": "Aromal V G",
+          "tasks_total": 2,
+          "tasks_completed": 1,
+          "tasks_in_progress": 1,
+          "avg_progress": 50.0
+        },
+        {
+          "name": "Akhil Shibu",
+          "tasks_total": 0,
+          "tasks_completed": 0,
+          "tasks_in_progress": 0,
+          "avg_progress": 0.0
+        }
+      ]
+    }
+  ]
+}

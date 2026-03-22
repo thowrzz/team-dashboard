@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21T08:33:20.831Z",
+  "lastUpdated": "2026-03-22T09:31:38.723469",
   "team": [
     {
       "id": 1,
@@ -11,33 +11,17 @@
         {
           "id": 1,
           "title": "SEO - Product Solutions",
-          "assignedDate": "2026-02-26",
-          "deadline": "2026-03-01",
+          "status": "Completed",
+          "progress": 100
+        },
+        {
+          "id": 2,
+          "title": "Poster for Client",
+          "assignedDate": "2026-03-21",
+          "deadline": "2026-03-23",
           "priority": "High",
-          "status": "Overdue",
-          "progress": 0,
-          "daysRemaining": 20,
-          "checkIns": {
-            "morning": false,
-            "afternoon": false,
-            "evening": false
-          },
-          "dailyCompletion": {
-            "Mon": 0,
-            "Tue": 0,
-            "Wed": 0,
-            "Thu": 0,
-            "Fri": 0,
-            "Sat": 0,
-            "Sun": 0
-          },
-          "activity": [
-            {
-              "date": "2026-03-21",
-              "action": "Day 20 overdue — awaiting update",
-              "type": "overdue"
-            }
-          ]
+          "status": "In Progress",
+          "progress": 0
         }
       ]
     },
@@ -51,22 +35,66 @@
     }
   ],
   "stats": {
-    "totalTasks": 1,
-    "completedTasks": 0,
-    "pendingTasks": 0,
-    "overdueTasks": 1,
-    "teamHealthScore": 40
+    "totalTasks": 2,
+    "completedTasks": 1,
+    "pendingTasks": 1,
+    "overdueTasks": 0,
+    "teamHealthScore": 75
   },
   "outreach": {
-    "totalSent": 46,
-    "sentToday": 20,
-    "leadsRemaining": 4954
+    "totalSent": 26,
+    "sentToday": 3,
+    "leadsRemaining": 4974
   },
   "student": {
     "name": "Panda",
-    "project": "Digital Memory Forensics (RAG)",
+    "phone": "+919778744342",
+    "project": "Digital Forensics",
     "currentDay": 1,
-    "week": 1,
-    "status": "Active"
+    "currentWeek": 1,
+    "totalDays": 30,
+    "status": "Learning",
+    "progress": 0,
+    "streak": 1,
+    "startDate": "2026-03-21",
+    "todayTopic": "Digital Forensics Basics",
+    "sessionActive": true,
+    "sessionStartTime": "2026-03-21T07:00:00+05:30",
+    "nextCheckIn": "2026-03-21T07:15:00+05:30",
+    "topics": {
+      "covered": [],
+      "upcoming": [
+        "Evidence Collection",
+        "File Systems",
+        "Memory Forensics",
+        "Network Forensics"
+      ]
+    },
+    "quizScores": [],
+    "attendance": {
+      "total": 1,
+      "present": 1,
+      "percentage": 100
+    },
+    "tasksToday": {
+      "total": 5,
+      "completed": 0,
+      "pending": 5
+    },
+    "notes": "Day 1 in progress \u2014 Digital Forensics Basics lesson sent at 7:00 AM"
+  },
+  "focusScore": {
+    "priorityScore": 6,
+    "urgencyLevel": "high",
+    "focusSummary": "Good progress! Aromal V G completed 'SEO - Product Solutions'",
+    "urgentItems": 0,
+    "recommendations": [
+      "Aromal V G's task due in 0 days"
+    ],
+    "positiveNotes": [
+      "Aromal V G completed 'SEO - Product Solutions'",
+      "Panda on a 1-day learning streak!"
+    ],
+    "lastUpdated": "2026-03-22T09:31:38.723436"
   }
 }

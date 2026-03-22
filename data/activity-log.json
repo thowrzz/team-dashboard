@@ -1,0 +1,57 @@
+{
+  "activities": [
+    {
+      "id": "act-001",
+      "timestamp": "2026-03-22T08:05:00+05:30",
+      "type": "morning_brief",
+      "category": "automation",
+      "title": "Morning Brief Sent",
+      "description": "Daily morning brief delivered to owner",
+      "actor": "Agent(I)",
+      "metadata": {
+        "channel": "WhatsApp",
+        "messageId": "3EB0DA90508F2F1D3F5386"
+      }
+    },
+    {
+      "id": "act-002",
+      "timestamp": "2026-03-22T09:00:00+05:30",
+      "type": "team_checkin",
+      "category": "team",
+      "title": "Aromal Morning Check-in",
+      "description": "Automated morning check-in sent to Aromal",
+      "actor": "Agent(I)",
+      "target": "Aromal V G",
+      "metadata": {
+        "channel": "WhatsApp",
+        "task": "Poster for Client"
+      }
+    },
+    {
+      "id": "act-003",
+      "timestamp": "2026-03-22T09:30:00+05:30",
+      "type": "task_completed",
+      "category": "team",
+      "title": "Task Completed",
+      "description": "SEO - Product Solutions marked as completed",
+      "actor": "Aromal V G",
+      "target": "SEO - Product Solutions",
+      "metadata": {
+        "progress": 100
+      }
+    },
+    {
+      "id": "act-004",
+      "timestamp": "2026-03-22T09:31:00+05:30",
+      "type": "focus_update",
+      "category": "automation",
+      "title": "Focus Score Updated",
+      "description": "Daily focus score recalculated: 6/10 (high urgency)",
+      "actor": "Agent(I)",
+      "metadata": {
+        "score": 6,
+        "urgency": "high"
+      }
+    }
+  ]
+}
