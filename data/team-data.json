@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-22T19:41:52.090556Z",
+  "lastUpdated": "2026-03-23T09:43:00+05:30",
   "team": [
     {
       "id": 1,
@@ -55,15 +55,15 @@
     "currentWeek": 1,
     "totalDays": 30,
     "status": "Learning",
-    "progress": 0,
-    "streak": 1,
+    "progress": 6.67,
+    "streak": 2,
     "startDate": "2026-03-22",
     "todayTopic": "What is RAG?",
     "sessionActive": true,
-    "sessionStartTime": "2026-03-21T07:00:00+05:30",
-    "nextCheckIn": "2026-03-21T07:15:00+05:30",
+    "sessionStartTime": "2026-03-22T07:00:00+05:30",
+    "nextCheckIn": "2026-03-23T07:00:00+05:30",
     "topics": {
-      "covered": [],
+      "covered": ["Introduction to Digital Forensics"],
       "upcoming": [
         "Evidence Collection",
         "File Systems",
@@ -73,8 +73,8 @@
     },
     "quizScores": [],
     "attendance": {
-      "total": 1,
-      "present": 1,
+      "total": 2,
+      "present": 2,
       "percentage": 100
     },
     "tasksToday": {
@@ -82,20 +82,20 @@
       "completed": 0,
       "pending": 5
     },
-    "notes": "Day 2 \u2014 RAG lesson sent"
+    "notes": "Day 2 — RAG lesson sent, streak: 2 days"
   },
   "focusScore": {
-    "priorityScore": 6,
+    "priorityScore": 7,
     "urgencyLevel": "high",
-    "focusSummary": "Good progress! Aromal V G completed 'SEO - Product Solutions'",
-    "urgentItems": 0,
+    "focusSummary": "Aromal's poster task is due TODAY - follow up required",
+    "urgentItems": 1,
     "recommendations": [
-      "Aromal V G's task due in 0 days"
+      "Follow up with Aromal on Poster for Client - due today"
     ],
     "positiveNotes": [
-      "Aromal V G completed 'SEO - Product Solutions'",
-      "Panda on a 1-day learning streak!"
+      "Aromal completed 'SEO - Product Solutions'",
+      "Panda on 2-day learning streak!"
     ],
-    "lastUpdated": "2026-03-22T12:39:12.104987"
+    "lastUpdated": "2026-03-23T09:43:00+05:30"
   }
 }
