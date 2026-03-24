@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T09:03:00+05:30",
+  "lastUpdated": "2026-03-24T21:30:00+05:30",
   "team": [
     {
       "id": 1,
@@ -21,9 +21,18 @@
           "assignedDate": "2026-03-21",
           "deadline": "2026-03-23",
           "priority": "High",
+          "status": "Completed",
+          "progress": 100,
+          "completedDate": "2026-03-24"
+        },
+        {
+          "id": 3,
+          "title": "Video Creation for Client",
+          "assignedDate": "2026-03-24",
+          "priority": "High",
           "status": "In Progress",
-          "progress": 0,
-          "note": "OVERDUE - 1 day past deadline"
+          "progress": 80,
+          "note": "At last stage - almost complete"
         }
       ]
     },
@@ -37,11 +46,11 @@
     }
   ],
   "stats": {
-    "totalTasks": 2,
-    "completedTasks": 1,
+    "totalTasks": 3,
+    "completedTasks": 2,
     "pendingTasks": 1,
-    "overdueTasks": 1,
-    "teamHealthScore": 75
+    "overdueTasks": 0,
+    "teamHealthScore": 90
   },
   "outreach": {
     "totalSent": 26,
@@ -85,15 +94,15 @@
     "notes": "Day 3 — Evidence Collection lesson scheduled, streak: 3 days"
   },
   "focusScore": {
-    "priorityScore": 9,
-    "urgencyLevel": "high",
-    "focusSummary": "Poster for Client task is 1 day OVERDUE!",
-    "urgentItems": 1,
-    "recommendations": ["URGENT: Follow up with Aromal on overdue Poster task"],
+    "priorityScore": 3,
+    "urgencyLevel": "low",
+    "focusSummary": "Video task at final stage - nearly done",
+    "urgentItems": 0,
+    "recommendations": [],
     "positiveNotes": [
-      "Aromal completed 'SEO - Product Solutions'",
-      "Panda maintaining 3-day streak"
+      "Aromal completed 2 tasks this week",
+      "Video creation 80% done"
     ],
-    "lastUpdated": "2026-03-24T09:03:00+05:30"
+    "lastUpdated": "2026-03-24T21:30:00+05:30"
   }
 }
