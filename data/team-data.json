@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T09:15:00+05:30",
+  "lastUpdated": "2026-03-24T08:45:00+05:30",
   "team": [
     {
       "id": 1,
@@ -52,21 +52,20 @@
     "name": "Panda",
     "phone": "+919778744342",
     "project": "Digital Forensics",
-    "currentDay": 2,
+    "currentDay": 3,
     "currentWeek": 1,
     "totalDays": 30,
     "status": "Learning",
-    "progress": 6.67,
-    "streak": 2,
+    "progress": 10,
+    "streak": 3,
     "startDate": "2026-03-22",
-    "todayTopic": "What is RAG?",
+    "todayTopic": "Evidence Collection",
     "sessionActive": true,
-    "sessionStartTime": "2026-03-22T07:00:00+05:30",
-    "nextCheckIn": "2026-03-23T07:00:00+05:30",
+    "sessionStartTime": "2026-03-24T07:00:00+05:30",
+    "nextCheckIn": "2026-03-25T07:00:00+05:30",
     "topics": {
-      "covered": ["Introduction to Digital Forensics"],
+      "covered": ["Introduction to Digital Forensics", "What is RAG?"],
       "upcoming": [
-        "Evidence Collection",
         "File Systems",
         "Memory Forensics",
         "Network Forensics"
@@ -74,8 +73,8 @@
     },
     "quizScores": [],
     "attendance": {
-      "total": 2,
-      "present": 2,
+      "total": 3,
+      "present": 3,
       "percentage": 100
     },
     "tasksToday": {
@@ -83,7 +82,7 @@
       "completed": 0,
       "pending": 5
     },
-    "notes": "Day 2 — RAG lesson sent, streak: 2 days"
+    "notes": "Day 3 — Evidence Collection lesson scheduled, streak: 3 days"
   },
   "focusScore": {
     "priorityScore": 2,
@@ -96,6 +95,6 @@
       "Aromal completed 'Poster for Client'",
       "All team tasks done!"
     ],
-    "lastUpdated": "2026-03-24T09:15:00+05:30"
+    "lastUpdated": "2026-03-24T08:45:00+05:30"
   }
 }
