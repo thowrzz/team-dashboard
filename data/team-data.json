@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-23T09:43:00+05:30",
+  "lastUpdated": "2026-03-24T09:15:00+05:30",
   "team": [
     {
       "id": 1,
@@ -21,8 +21,9 @@
           "assignedDate": "2026-03-21",
           "deadline": "2026-03-23",
           "priority": "High",
-          "status": "In Progress",
-          "progress": 0
+          "status": "Completed",
+          "progress": 100,
+          "completedDate": "2026-03-24"
         }
       ]
     },
@@ -37,10 +38,10 @@
   ],
   "stats": {
     "totalTasks": 2,
-    "completedTasks": 1,
-    "pendingTasks": 1,
+    "completedTasks": 2,
+    "pendingTasks": 0,
     "overdueTasks": 0,
-    "teamHealthScore": 75
+    "teamHealthScore": 100
   },
   "outreach": {
     "totalSent": 26,
@@ -85,17 +86,16 @@
     "notes": "Day 2 — RAG lesson sent, streak: 2 days"
   },
   "focusScore": {
-    "priorityScore": 7,
-    "urgencyLevel": "high",
-    "focusSummary": "Aromal's poster task is due TODAY - follow up required",
-    "urgentItems": 1,
-    "recommendations": [
-      "Follow up with Aromal on Poster for Client - due today"
-    ],
+    "priorityScore": 2,
+    "urgencyLevel": "low",
+    "focusSummary": "All tasks completed - great work!",
+    "urgentItems": 0,
+    "recommendations": [],
     "positiveNotes": [
       "Aromal completed 'SEO - Product Solutions'",
-      "Panda on 2-day learning streak!"
+      "Aromal completed 'Poster for Client'",
+      "All team tasks done!"
     ],
-    "lastUpdated": "2026-03-23T09:43:00+05:30"
+    "lastUpdated": "2026-03-24T09:15:00+05:30"
   }
 }
