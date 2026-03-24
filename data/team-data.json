@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T08:45:00+05:30",
+  "lastUpdated": "2026-03-24T08:53:00+05:30",
   "team": [
     {
       "id": 1,
@@ -21,9 +21,9 @@
           "assignedDate": "2026-03-21",
           "deadline": "2026-03-23",
           "priority": "High",
-          "status": "Completed",
-          "progress": 100,
-          "completedDate": "2026-03-24"
+          "status": "In Progress",
+          "progress": 0,
+          "note": "Overdue - due March 23"
         }
       ]
     },
@@ -38,10 +38,10 @@
   ],
   "stats": {
     "totalTasks": 2,
-    "completedTasks": 2,
-    "pendingTasks": 0,
-    "overdueTasks": 0,
-    "teamHealthScore": 100
+    "completedTasks": 1,
+    "pendingTasks": 1,
+    "overdueTasks": 1,
+    "teamHealthScore": 75
   },
   "outreach": {
     "totalSent": 26,
@@ -85,16 +85,15 @@
     "notes": "Day 3 — Evidence Collection lesson scheduled, streak: 3 days"
   },
   "focusScore": {
-    "priorityScore": 2,
-    "urgencyLevel": "low",
-    "focusSummary": "All tasks completed - great work!",
-    "urgentItems": 0,
-    "recommendations": [],
+    "priorityScore": 8,
+    "urgencyLevel": "high",
+    "focusSummary": "Poster for Client task is overdue!",
+    "urgentItems": 1,
+    "recommendations": ["Follow up with Aromal on overdue Poster task"],
     "positiveNotes": [
       "Aromal completed 'SEO - Product Solutions'",
-      "Aromal completed 'Poster for Client'",
-      "All team tasks done!"
+      "Panda maintaining 3-day streak"
     ],
-    "lastUpdated": "2026-03-24T08:45:00+05:30"
+    "lastUpdated": "2026-03-24T08:53:00+05:30"
   }
 }
