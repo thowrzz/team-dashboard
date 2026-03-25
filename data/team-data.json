@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T21:30:00+05:30",
+  "lastUpdated": "2026-03-25T08:49:00+05:30",
   "team": [
     {
       "id": 1,
@@ -61,19 +61,23 @@
     "name": "Panda",
     "phone": "+919778744342",
     "project": "Digital Forensics",
-    "currentDay": 3,
+    "currentDay": 5,
     "currentWeek": 1,
     "totalDays": 30,
     "status": "Learning",
-    "progress": 10,
-    "streak": 3,
+    "progress": 13,
+    "streak": 5,
     "startDate": "2026-03-22",
-    "todayTopic": "Evidence Collection",
+    "todayTopic": "File Systems",
     "sessionActive": true,
-    "sessionStartTime": "2026-03-24T07:00:00+05:30",
-    "nextCheckIn": "2026-03-25T07:00:00+05:30",
+    "sessionStartTime": "2026-03-25T07:00:00+05:30",
+    "nextCheckIn": "2026-03-26T07:00:00+05:30",
     "topics": {
-      "covered": ["Introduction to Digital Forensics", "What is RAG?"],
+      "covered": [
+        "Introduction to Digital Forensics",
+        "What is RAG?",
+        "Embeddings Deep Dive"
+      ],
       "upcoming": [
         "File Systems",
         "Memory Forensics",
@@ -82,8 +86,8 @@
     },
     "quizScores": [],
     "attendance": {
-      "total": 3,
-      "present": 3,
+      "total": 4,
+      "present": 4,
       "percentage": 100
     },
     "tasksToday": {
@@ -91,7 +95,7 @@
       "completed": 0,
       "pending": 5
     },
-    "notes": "Day 3 — Evidence Collection lesson scheduled, streak: 3 days"
+    "notes": "Day 5 — File Systems lesson, streak: 5 days"
   },
   "focusScore": {
     "priorityScore": 3,
@@ -101,8 +105,9 @@
     "recommendations": [],
     "positiveNotes": [
       "Aromal completed 2 tasks this week",
-      "Video creation 80% done"
+      "Video creation 80% done",
+      "Panda maintaining 5-day learning streak"
     ],
-    "lastUpdated": "2026-03-24T21:30:00+05:30"
+    "lastUpdated": "2026-03-25T08:49:00+05:30"
   }
 }
