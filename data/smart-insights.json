@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-03-25T10:39:52.154152",
+  "recommendations": [
+    {
+      "priority": 4,
+      "icon": "\ud83d\udd25",
+      "title": "Strong Learning Momentum",
+      "description": "Panda on a 5-day streak!",
+      "action": "Keep the momentum going - acknowledge achievement",
+      "impact": "Positive - great progress"
+    },
+    {
+      "priority": 5,
+      "icon": "\ud83d\ude80",
+      "title": "Outreach Opportunity",
+      "description": "17 more messages to reach daily target",
+      "action": "Run outreach batch to hit goal",
+      "impact": "Medium - accelerates pipeline"
+    }
+  ],
+  "bottlenecks": [],
+  "predictions": [
+    {
+      "member": "Aromal V G",
+      "task": "Video Creation for Client",
+      "progress": 80,
+      "predicted_completion": "2026-03-27",
+      "velocity": 0.29
+    }
+  ],
+  "optimal_focus": {
+    "focus": "Help Aromal V G finish Video Creation for Client",
+    "why": "Task at 80% - close to completion",
+    "action": "Remove any blockers and celebrate",
+    "urgency": "medium"
+  },
+  "metrics": {
+    "total_recommendations": 2,
+    "critical_bottlenecks": 0,
+    "avg_velocity": 0.29
+  }
+}
