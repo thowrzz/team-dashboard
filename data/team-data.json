@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-27T08:46:00+05:30",
+  "lastUpdated": "2026-03-27T08:56:00+05:30",
   "team": [
     {
       "id": 1,
@@ -52,7 +52,7 @@
     "pendingTasks": 0,
     "overdueTasks": 0,
     "teamHealthScore": 95,
-    "lastUpdated": "2026-03-27T08:46:00+05:30"
+    "lastUpdated": "2026-03-27T08:56:00+05:30"
   },
   "outreach": {
     "totalSent": 26,
@@ -111,6 +111,6 @@
       "Team health score at 95%",
       "Panda maintaining 6-day learning streak"
     ],
-    "lastUpdated": "2026-03-27T08:46:00+05:30"
+    "lastUpdated": "2026-03-27T08:56:00+05:30"
   }
 }
