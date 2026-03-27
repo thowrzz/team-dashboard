@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-26T09:00:00+05:30",
+  "lastUpdated": "2026-03-27T08:46:00+05:30",
   "team": [
     {
       "id": 1,
@@ -52,7 +52,7 @@
     "pendingTasks": 0,
     "overdueTasks": 0,
     "teamHealthScore": 95,
-    "lastUpdated": "2026-03-26T09:00:00+05:30"
+    "lastUpdated": "2026-03-27T08:46:00+05:30"
   },
   "outreach": {
     "totalSent": 26,
@@ -63,34 +63,34 @@
     "name": "Panda",
     "phone": "+919778744342",
     "project": "Digital Forensics",
-    "currentDay": 5,
+    "currentDay": 6,
     "currentWeek": 1,
     "totalDays": 30,
     "status": "Learning",
-    "progress": 17,
-    "streak": 5,
+    "progress": 20,
+    "streak": 6,
     "startDate": "2026-03-22",
-    "todayTopic": "Memory Forensics",
+    "todayTopic": "Network Forensics",
     "sessionActive": false,
     "sessionStartTime": null,
-    "nextCheckIn": "2026-03-27T07:00:00+05:30",
+    "nextCheckIn": "2026-03-28T07:00:00+05:30",
     "topics": {
       "covered": [
         "Introduction to Digital Forensics",
         "What is RAG?",
         "Embeddings Deep Dive",
-        "File Systems"
+        "File Systems",
+        "Memory Forensics"
       ],
       "upcoming": [
-        "Memory Forensics",
         "Network Forensics",
         "Disk Forensics"
       ]
     },
     "quizScores": [],
     "attendance": {
-      "total": 5,
-      "present": 5,
+      "total": 6,
+      "present": 6,
       "percentage": 100
     },
     "tasksToday": {
@@ -98,7 +98,7 @@
       "completed": 0,
       "pending": 5
     },
-    "notes": "Day 5 — Memory Forensics lesson, streak: 5 days"
+    "notes": "Day 6 — Network Forensics lesson, streak: 6 days"
   },
   "focusScore": {
     "priorityScore": 1,
@@ -109,8 +109,8 @@
     "positiveNotes": [
       "Aromal completed all 3 tasks",
       "Team health score at 95%",
-      "Panda maintaining 5-day learning streak"
+      "Panda maintaining 6-day learning streak"
     ],
-    "lastUpdated": "2026-03-26T09:00:00+05:30"
+    "lastUpdated": "2026-03-27T08:46:00+05:30"
   }
 }
