@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-27T08:56:00+05:30",
+  "lastUpdated": "2026-03-28T08:47:00+05:30",
   "team": [
     {
       "id": 1,
@@ -52,7 +52,7 @@
     "pendingTasks": 0,
     "overdueTasks": 0,
     "teamHealthScore": 95,
-    "lastUpdated": "2026-03-27T08:56:00+05:30"
+    "lastUpdated": "2026-03-28T08:47:00+05:30"
   },
   "outreach": {
     "totalSent": 26,
@@ -63,34 +63,36 @@
     "name": "Panda",
     "phone": "+919778744342",
     "project": "Digital Forensics",
-    "currentDay": 6,
+    "currentDay": 7,
     "currentWeek": 1,
     "totalDays": 30,
     "status": "Learning",
-    "progress": 20,
-    "streak": 6,
+    "progress": 23,
+    "streak": 7,
     "startDate": "2026-03-22",
-    "todayTopic": "Network Forensics",
+    "todayTopic": "Disk Forensics",
     "sessionActive": false,
     "sessionStartTime": null,
-    "nextCheckIn": "2026-03-28T07:00:00+05:30",
+    "nextCheckIn": "2026-03-29T07:00:00+05:30",
     "topics": {
       "covered": [
         "Introduction to Digital Forensics",
         "What is RAG?",
         "Embeddings Deep Dive",
         "File Systems",
-        "Memory Forensics"
+        "Memory Forensics",
+        "Network Forensics"
       ],
       "upcoming": [
-        "Network Forensics",
-        "Disk Forensics"
+        "Disk Forensics",
+        "Mobile Forensics",
+        "Cloud Forensics"
       ]
     },
     "quizScores": [],
     "attendance": {
-      "total": 6,
-      "present": 6,
+      "total": 7,
+      "present": 7,
       "percentage": 100
     },
     "tasksToday": {
@@ -98,7 +100,7 @@
       "completed": 0,
       "pending": 5
     },
-    "notes": "Day 6 — Network Forensics lesson, streak: 6 days"
+    "notes": "Day 7 — Disk Forensics lesson, streak: 7 days"
   },
   "focusScore": {
     "priorityScore": 1,
@@ -109,8 +111,8 @@
     "positiveNotes": [
       "Aromal completed all 3 tasks",
       "Team health score at 95%",
-      "Panda maintaining 6-day learning streak"
+      "Panda maintaining 7-day learning streak"
     ],
-    "lastUpdated": "2026-03-27T08:56:00+05:30"
+    "lastUpdated": "2026-03-28T08:47:00+05:30"
   }
 }
